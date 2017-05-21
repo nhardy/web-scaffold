@@ -3,6 +3,7 @@ import path from 'path';
 import { identity, noop } from 'lodash-es';
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import OfflinePlugin from 'offline-plugin';
 import nodeExternals from 'webpack-node-externals';
 import {
   BannerPlugin,
@@ -319,6 +320,15 @@ export default function webpackFactory({ production = false, client = false, wri
       }),
       client && production && new optimize.UglifyJsPlugin({
         sourceMap: true,
+      }),
+      client && new OfflinePlugin({
+        externals: [
+          '/',
+        ],
+        AppCache: false,
+        ServiceWorker: {
+          navigateFallbackURL: '/',
+        },
       }),
       client && new WriteManifestPlugin({ client, callback: writeManifestCallback }),
     ].filter(identity),

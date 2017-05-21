@@ -35,6 +35,11 @@ app.use('/static', (req, res, next) => {
 // Serve static files
 app.use('/static', Express.static('dist', {
   maxAge: '1y',
+  setHeaders(res, path) {
+    if (path.endsWith('/dist/sw.js')) {
+      res.set('Cache-Control', 'no-cache');
+    }
+  }
 }));
 
 app.get('/github', (req, res) => {

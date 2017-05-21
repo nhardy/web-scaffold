@@ -6,6 +6,7 @@ import ReactGA from 'react-ga';
 import { syncHistoryWithStore } from 'react-router-redux';
 import scriptsManager from 'redux-scripts-manager';
 import Nprogress from 'nprogress';
+import OfflinePlugin from 'offline-plugin/runtime';
 
 import config from 'app/config';
 import createStore from 'app/redux/store';
@@ -36,6 +37,7 @@ Nprogress.configure({
 });
 ReactGA.initialize(config.analytics.trackingId);
 render();
+OfflinePlugin.install();
 
 if (module.hot) {
   module.hot.accept('./Root', () => {

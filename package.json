@@ -119,6 +119,7 @@
     "lodash-es": "^4.17.4",
     "nodemailer": "^4.0.1",
     "nprogress": "^0.2.0",
+    "offline-plugin": "^4.7.0",
     "prop-types": "https://registry.npmjs.org/prop-types/-/prop-types-15.5.8.tgz",
     "react": "^15.5.4",
     "react-display-name": "^0.2.0",
