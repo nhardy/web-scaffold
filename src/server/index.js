@@ -42,7 +42,11 @@ app.get('/github', (req, res) => {
 });
 
 app.get('/linkedin', (req, res) => {
-  res.redirect(302, 'https://www.linkedin.com/in/nathan-hardy-263488b2/');
+  res.redirect(301, 'https://www.linkedin.com/in/nathan-hardy-263488b2/');
+});
+
+app.get('/youtube', (req, res) => {
+  res.redirect(301, 'https://www.youtube.com/channel/UCryVek7qe6Jodw4ZYbrgkHA');
 });
 
 // Serve API Requests

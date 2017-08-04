@@ -2,19 +2,10 @@
 
 
 .root
-  content: ''
+  composes: styleguide from 'app/assets/stylus/common.styl'
 
-.heading
-  font-size: 48px
-  margin-bottom: 16px
-
-.text
-  margin-bottom: 8px
-  text-indent: 2em
-
-.subheading
-  font-size: 32px
-  margin-bottom: 8px
+.paragraph
+  composes: paragraph from 'app/assets/stylus/common.styl'
 
 .repos
   margin-bottom: 16px

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router';
 
 import DefaultLayout from 'app/layouts/Default';
-import styles from '../Home/styles.styl';
+import styles from './styles.styl';
 
 
 const ErrorView = ({ route: { status } }: { route: { status: number }}) => (
@@ -16,7 +16,7 @@ const ErrorView = ({ route: { status } }: { route: { status: number }}) => (
     </Helmet>
     <h1>HTTP {status} Error</h1>
     {status === 404 ? (
-      <p>
+      <p className={styles.paragraph}>
         The requested page could not be found.
         {' '}
         <em>Sorry</em>.
@@ -26,7 +26,7 @@ const ErrorView = ({ route: { status } }: { route: { status: number }}) => (
         <Link to="/contact">Contact me</Link> and let me know.
       </p>
     ) : (
-      <p>
+      <p className={styles.paragraph}>
         An unexpected error occurred trying to serve your request.
         {' '}
         <em>Sorry</em>.

@@ -18,6 +18,9 @@ const SiteFooter = () => (
             <a href="/github" target="_blank" rel="noopener noreferrer">
               <FontAwesome className="fa-github" />
             </a>
+            <a href="/youtube" target="_blank" rel="noopener noreferrer">
+              <FontAwesome className="fa-youtube-play" />
+            </a>
             <Link to="/contact">
               <FontAwesome className="fa-at" />
             </Link>

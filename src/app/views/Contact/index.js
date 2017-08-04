@@ -7,12 +7,14 @@ import config from 'app/config';
 import { checkStatus } from 'app/lib/fetch';
 import { makeTitle } from 'app/lib/social';
 import DefaultLayout from 'app/layouts/Default';
+import P from 'app/components/P';
 import form, { formShape } from 'app/components/Form/form';
 import Text from 'app/components/Form/Text';
 import TextArea from 'app/components/Form/TextArea';
 import Email from 'app/components/Form/Email';
 import Recaptcha from 'app/components/Form/Recaptcha';
-import styles from 'app/components/Form/styles.styl';
+import formStyles from 'app/components/Form/styles.styl';
+import styles from './styles.styl';
 
 
 const TITLE = 'Contact Me';
@@ -85,7 +87,7 @@ export default class ContactView extends Component {
   render() {
     const { submitting, sent } = this.state;
     return (
-      <DefaultLayout>
+      <DefaultLayout className={styles.root}>
         <Helmet>
           <title>{TITLE}</title>
           <meta name="description" content={DESCRIPTION} />
@@ -97,23 +99,23 @@ export default class ContactView extends Component {
           <meta name="twitter:description" content={DESCRIPTION} />
         </Helmet>
         {!sent ? (
-          <form className={styles.form}>
+          <form className={formStyles.form}>
             <h1>Contact Me</h1>
-            <label className={styles.label} htmlFor="contact-name">Name</label>
+            <label className={formStyles.label} htmlFor="contact-name">Name</label>
             <Text name="name" id="contact-name" pattern=".{2,100}" required placeholder="e.g. John Smith" />
-            <label className={styles.label} htmlFor="contact-email">Email</label>
+            <label className={formStyles.label} htmlFor="contact-email">Email</label>
             <Email name="email" id="contact-email" required />
-            <label className={styles.label} htmlFor="contact-subject">Subject</label>
+            <label className={formStyles.label} htmlFor="contact-subject">Subject</label>
             <Text name="subject" id="contact-subject" pattern=".{3,50}" required placeholder="e.g. Résumé" />
-            <label className={styles.label} htmlFor="contact-message">Message</label>
+            <label className={formStyles.label} htmlFor="contact-message">Message</label>
             <TextArea name="message" id="contact-message" required placeholder="Type your message..." />
             <Recaptcha withRef={ref => (this._captcha = ref)} name="captcha" />
-            <div className={cx(styles.errors, { [styles.hidden]: !this.state.error })}>
+            <div className={cx(formStyles.errors, { [formStyles.hidden]: !this.state.error })}>
               {this.state.error}
             </div>
             <button
               ref={ref => (this._submit = ref)}
-              className={styles.button}
+              className={formStyles.button}
               onClick={this.submit}
               disabled={submitting}
             >
@@ -125,10 +127,10 @@ export default class ContactView extends Component {
             </button>
           </form>
         ) : (
-          <div className={styles.styl}>
+          <div>
             <h1>Thanks for your message!</h1>
-            <p>I&apos;ll be in touch soon.</p>
-            <p>Send <a href="" onClick={this.reset}>another</a>?</p>
+            <P className={styles.paragraph}>I&apos;ll be in touch soon.</P>
+            <P className={styles.paragraph}>Send <a href="" onClick={this.reset}>another</a>?</P>
           </div>
         )}
 

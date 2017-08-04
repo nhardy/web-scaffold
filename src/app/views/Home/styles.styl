@@ -2,19 +2,10 @@
 
 
 .root
-  line-height: 1.125
+  composes: styleguide from 'app/assets/stylus/common.styl'
 
-  h1
-    margin-bottom: 16px
-    font-size: 48px
-    text-align: center
-
-  p
-    font-size: 18px
-    text-indent: 2em
-
-    &:not(:last-child)
-      margin-bottom: 0.5em
+.paragraph
+  composes: paragraph from 'app/assets/stylus/common.styl'
 
 .profile
   display: block

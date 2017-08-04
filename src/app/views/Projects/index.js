@@ -10,6 +10,7 @@ import { setRouteError } from 'app/actions/routeError';
 import { getReposByUsername } from 'app/actions/github';
 import { makeAbsoluteUrl, makeTitle } from 'app/lib/social';
 import DefaultLayout from 'app/layouts/Default';
+import P from 'app/components/P';
 import GitHubRepo from 'app/components/GitHub/Repo';
 import Breakout from 'app/components/Breakout';
 import Slider from 'app/components/Slider';
@@ -69,8 +70,8 @@ export default class ProjectsView extends Component { // eslint-disable-line rea
           <meta name="twitter:description" content={DESCRIPTION} />
           <meta name="twitter:image" content={makeAbsoluteUrl(developerProfileImg)} />
         </Helmet>
-        <h1 className={styles.heading}>Projects</h1>
-        <p className={styles.text}>
+        <h1>Projects</h1>
+        <P className={styles.paragraph}>
           I have worked as professionally as part of a team on a variety of web applications and services in use by the general public.
           {' '}
           These include the APIs and public website of
@@ -80,11 +81,11 @@ export default class ProjectsView extends Component { // eslint-disable-line rea
           Channel 9&apos;s live streaming and video-on-demand platform, as well as the
           {' '}
           <a href="https://www.appliancesonline.com.au" target="_blank" rel="noopener noreferrer">Appliances Online website</a>.
-        </p>
-        <h2 className={styles.subheading}>GitHub</h2>
-        <p className={styles.text}>
+        </P>
+        <h2>GitHub</h2>
+        <P className={styles.paragraph}>
           Below are a list of projects that I have created and published to GitHub;
-        </p>
+        </P>
         <ul className={styles.repos}>
           {repos.map(repo => (
             <li key={repo.id} className={styles.repo}>
@@ -92,7 +93,7 @@ export default class ProjectsView extends Component { // eslint-disable-line rea
             </li>
           ))}
         </ul>
-        <h2 className={styles.subheading}>Snapshot Portfolio</h2>
+        <h2>Snapshot Portfolio</h2>
         <Breakout>
           <Slider autoplay>
             <img className={styles.slide} src={websiteImg} alt="This website" />
@@ -101,7 +102,7 @@ export default class ProjectsView extends Component { // eslint-disable-line rea
             <img className={styles.slide} src={stickiesLoginImg} alt="Stickies - Login" />
           </Slider>
         </Breakout>
-        <p className={styles.text}>
+        <P className={styles.paragraph}>
           The above slider is a <abbr title="Work In Progress">WIP</abbr> that has been created for use in a University assignment.
           {' '}
           Its design is not yet complete, and will be improved for the purposes of this site at a later date.
@@ -109,7 +110,7 @@ export default class ProjectsView extends Component { // eslint-disable-line rea
           The images feature a number of different responsive design website projects that I have worked on,
           {' '}
           including a number of University projects.
-        </p>
+        </P>
       </DefaultLayout>
     );
   }

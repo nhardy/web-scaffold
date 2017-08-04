@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import config from 'app/config';
 import { makeTitle } from 'app/lib/social';
 import SpecialLayout from 'app/layouts/Special';
+import P from 'app/components/P';
 import profileImg from 'app/assets/images/profile.jpg';
 import profileImg2x from 'app/assets/images/profile-2x.jpg';
 import profileImg3x from 'app/assets/images/profile-3x.jpg';
@@ -33,7 +34,7 @@ const HomeView = () => (
     </Helmet>
     <h1>Home</h1>
     <img className={styles.profile} src={profileImg} srcSet={`${profileImg2x} 2x, ${profileImg3x} 3x`} alt="Profile" />
-    <p>
+    <P className={styles.paragraph}>
       I&apos;m a
       {' '}
       <a
@@ -49,13 +50,13 @@ const HomeView = () => (
       <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">University of Technology, Sydney</a>
       {' '}
       with a passion for IT and computer science.
-    </p>
-    <p>
+    </P>
+    <P className={styles.paragraph}>
       I am currently studying overseas in New Zealand at the
       {' '}
       <a href="http://www.otago.ac.nz/" target="_blank" rel="noopener noreferrer">University of Otago</a>.
-    </p>
-    <p>
+    </P>
+    <P className={styles.paragraph}>
       I have previously interned at
       {' '}
       <a href="https://www.appliancesonline.com.au/" target="_blank" rel="noopener noreferrer">Appliances Online</a>
@@ -73,8 +74,8 @@ const HomeView = () => (
       <abbr title="Video On Demand">VOD</abbr>
       {' '}
       website.
-    </p>
-    <p>
+    </P>
+    <P className={styles.paragraph}>
       I have had an interest in computers from a young age and have worked on many small projects, some of which are listed
       {' '}
       <Link to="/projects">here</Link>.
@@ -104,10 +105,10 @@ const HomeView = () => (
       <a href={config.github.repoUrl} target="_blank" rel="noopener noreferrer">available on GitHub</a>.
       {' '}
       Please note that although the project is open-source, some images and content are copyrighted.
-    </p>
-    <p>
+    </P>
+    <P className={styles.paragraph}>
       Feel free to take a look at my <Link to="/cv">online curriculum vitæ</Link>, or <Link to="/contact">contact me</Link> if you have any questions.
-    </p>
+    </P>
   </SpecialLayout>
 );
 

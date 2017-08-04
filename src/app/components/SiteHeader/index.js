@@ -66,6 +66,9 @@ export default class SiteHeader extends Component {
               <li className={styles.item}>
                 <Link className={styles.link} to="/cv">Curriculum Vitæ</Link>
               </li>
+              <li className={styles.item}>
+                <Link className={styles.link} to="/govhack">GovHack</Link>
+              </li>
             </ul>
           </nav>
         </div>
