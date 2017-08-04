@@ -37,7 +37,6 @@ export default class P extends Component<void, Props, State> {
 
   update = throttle(() => {
     const visible = isScrolledIntoView(this._node);
-    console.log('visible', visible);
     if (this.state.visible !== visible) {
       this.setState({
         visible,
