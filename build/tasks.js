@@ -1,8 +1,6 @@
 // @flow
-
 /* eslint-disable no-console */
 
-import { noop } from 'lodash-es';
 import yargs from 'yargs';
 
 import clean from './clean';
@@ -27,6 +25,12 @@ function runTask(name, runner: () => Promise<any>) {
   };
 }
 
+function failOnError(error: Error) {
+  if (error) {
+    process.exitCode = 1;
+  }
+}
+
 // `yargs` uses a getter function to execute
 // eslint-disable-next-line no-unused-expressions
 yargs.command('*', 'Informational message', () => {}, () => {
@@ -39,7 +43,7 @@ yargs.command('*', 'Informational message', () => {}, () => {
       .then(runTask('webpack-client-dev', webpackClientDev))
       .then(runTask('wepack-server-dev', webpackServerDev))
       .then(runTask('serve', serve))
-      .catch(noop);
+      .catch(failOnError);
   })
   .command('prod', 'Builds the application in production mode and starts the server', () => {}, () => {
     process.env.HTTPS_ORIGIN = 'true';
@@ -48,7 +52,7 @@ yargs.command('*', 'Informational message', () => {}, () => {
       .then(runTask('ensure-certificate', ensureCertificate))
       .then(runTask('webpack-prod', webpackProd))
       .then(runTask('serve', serve))
-      .catch(noop);
+      .catch(failOnError);
   })
   .command('package', 'Builds the application to a zip', () => {}, () => {
     Promise.resolve()
@@ -56,7 +60,7 @@ yargs.command('*', 'Informational message', () => {}, () => {
       .then(runTask('ensure-certificate', ensureCertificate))
       .then(runTask('webpack-prod', webpackProd))
       .then(runTask('zip', zip))
-      .catch(noop);
+      .catch(failOnError);
   })
   .command('deploy', 'Builds and deploys the application to Azure App Service', () => {}, () => {
     Promise.resolve()
@@ -65,7 +69,7 @@ yargs.command('*', 'Informational message', () => {}, () => {
       .then(runTask('webpack-prod', webpackProd))
       .then(runTask('zip', zip))
       .then(runTask('deploy', deploy))
-      .catch(noop);
+      .catch(failOnError);
   })
   // .demandCommand()
   .help()
