@@ -45,7 +45,7 @@ export default class SiteHeader extends Component<Props, void> {
     // @see: https://github.com/yannickcr/eslint-plugin-react/issues/1138
     /* eslint-disable react/prop-types */
     return (
-      <div className={cx(styles.root, this.props.className)} ref={(ref) => (this._node = ref)} />
+      <div className={cx(styles.root, this.props.className)} ref={ref => (this._node = ref)} />
     );
   }
 }

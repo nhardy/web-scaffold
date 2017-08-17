@@ -119,7 +119,7 @@ export default class Slider extends Component<Props, State> {
     return (
       <div className={styles.root}>
         <div className={styles.wrapper}>
-          <div className={styles.inner} ref={(ref) => (this._node = ref)}>
+          <div className={styles.inner} ref={ref => (this._node = ref)}>
             <button type="button" className={styles.previous} onClick={this.previous}>
               <div className={styles.iconWrapper}>
                 <Icon name="chevron-circle-left" className={styles.icon} />
