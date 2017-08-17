@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 import { loadScript } from 'redux-scripts-manager';
 
@@ -19,7 +18,7 @@ export default class RecaptchaField extends Component {
 
   componentDidMount() {
     this.props.loadScript(cb => `https://www.google.com/recaptcha/api.js?onload=${cb}&render=explicit`).then(() => {
-      this.widgetId = window.grecaptcha.render(findDOMNode(this._node), {
+      this.widgetId = window.grecaptcha.render(this._node, {
         sitekey: config.recaptcha.siteKey,
         callback: this.verified,
         'expired-callback': this.timeout,
@@ -44,7 +43,7 @@ export default class RecaptchaField extends Component {
   // @public
   checkValidity = () =>
     // return `true`/`false` if the value is valid
-     !!this.token;
+    !!this.token;
 
   widgetId = null;
 

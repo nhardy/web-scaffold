@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable react/prop-types */
 
 import React, { Component } from 'react';
 import type { Element } from 'react';
@@ -11,11 +12,7 @@ import type { StubsType } from '../flowTypes';
 
 export function createStubComponent(displayName: string) {
   // eslint-disable-next-line react/prefer-stateless-function
-  return class StubComponent extends Component {
-    props: {
-      children: Element<*>,
-    };
-
+  return class StubComponent extends Component<{ children: Element<*> }, void> {
     static displayName = displayName;
 
     render() {

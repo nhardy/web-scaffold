@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import { debounce } from 'lodash-es';
 import cx from 'classnames';
 
@@ -46,7 +45,7 @@ export default class SpecialLayout extends Component {
   }
 
   onResize = throttle(() => {
-    this.snapHeight = window.innerHeight - findDOMNode(this._header).clientHeight;
+    this.snapHeight = window.innerHeight - this._header.clientHeight;
     if (window.scrollY > 0 && window.scrollY < this.snapHeight) {
       this.scroll(window.scrollY < this.snapHeight / 2 ? 0 : this.snapHeight);
     }

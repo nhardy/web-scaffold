@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import { Link } from 'react-router';
 import cx from 'classnames';
 
@@ -35,7 +34,7 @@ export default class DefaultLayout extends Component {
     this.detachOverlay && this.detachOverlay();
   }
 
-  calculateScrollThreshold = () => findDOMNode(this._parallax).clientHeight - (2 * findDOMNode(this._header).clientHeight);
+  calculateScrollThreshold = () => this._parallax.clientHeight - (2 * this._header.clientHeight);
 
   render() {
     return (

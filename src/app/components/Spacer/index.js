@@ -21,8 +21,8 @@ type State = {
   maxDimension: number,
 };
 
-export default class Spacer extends PureComponent<DefaultProps, Props, State> {
-  static defaultProps = {
+export default class Spacer extends PureComponent<Props, State> {
+  static defaultProps: DefaultProps = {
     ratio: 16 / 9,
   };
 
@@ -55,7 +55,7 @@ export default class Spacer extends PureComponent<DefaultProps, Props, State> {
     const encodedSvg = `%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='${width}'%20height='${height}'%20viewBox='0 0 ${width} ${height}'%3E%3C%2Fsvg%3E`;
 
     return (
-      <img className={cx(styles.root, className)} src={`data:image/svg+xml;utf8,${encodedSvg}`} role="presentation" alt="" />
+      <img className={cx(styles.root, className)} src={`data:image/svg+xml;utf8,${encodedSvg}`} alt="" />
     );
   }
 }

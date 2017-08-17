@@ -40,7 +40,7 @@ export default class EmailField extends Component {
   // @public
   checkValidity = () =>
     // return `true`/`false` if the value is valid
-     this._node.checkValidity();
+    this._node.checkValidity();
 
   render() {
     const { name, id, required, placeholder, field: { valid, invalid } } = this.props;

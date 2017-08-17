@@ -33,6 +33,20 @@ export default function field() {
       valid: true,
     };
 
+    componentDidMount() {
+      this.props.withRef && this.props.withRef(this._field);
+      this.context.form.updateField(this.props.name, {
+        component: this,
+        value: this.getValue(),
+        valid: true,
+      });
+    }
+
+    componentWillUnmount() {
+      this.props.withRef && this.props.withRef(null);
+      this.context.form.removeField(this.props.name);
+    }
+
     getValue = () => this._field.getValue();
 
     setValue = (value) => {
@@ -49,20 +63,6 @@ export default function field() {
       this.context.form.updateField(this.props.name, { valid: true });
       this.setState({ valid: true });
     };
-
-    componentDidMount() {
-      this.props.withRef && this.props.withRef(this._field);
-      this.context.form.updateField(this.props.name, {
-        component: this,
-        value: this.getValue(),
-        valid: true,
-      });
-    }
-
-    componentWillUnmount() {
-      this.props.withRef && this.props.withRef(null);
-      this.context.form.removeField(this.props.name);
-    }
 
     render() {
       const { valid } = this.state;

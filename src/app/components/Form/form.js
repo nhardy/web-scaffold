@@ -19,8 +19,6 @@ export default function form() {
       form: _formShape,
     };
 
-    _fields = {};
-
     getChildContext() {
       return {
         form: {
@@ -34,6 +32,8 @@ export default function form() {
       ...acc,
       [name]: value,
     }), {});
+
+    _fields = {};
 
     updateField = (name, data) => {
       this._fields[name] = merge(this._fields[name], data);
