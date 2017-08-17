@@ -35,7 +35,7 @@ export default class P extends Component<Props, State> {
   }
 
   update = throttle(() => {
-    const visible = isScrolledIntoView(this._node);
+    const visible = this._node ? isScrolledIntoView(this._node) : false;
     if (this.state.visible !== visible) {
       this.setState({
         visible,
@@ -43,7 +43,7 @@ export default class P extends Component<Props, State> {
     }
   });
 
-  _node: HTMLParagraphElement;
+  _node: ?HTMLParagraphElement;
 
   render() {
     const { className, children, ...props } = this.props;

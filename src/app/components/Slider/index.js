@@ -62,7 +62,7 @@ export default class Slider extends Component<Props, State> {
     this.props.autoplay && this.deactivateAutoplay();
   }
 
-  _node: HTMLDivElement;
+  _node: ?HTMLDivElement;
 
   _interval: number;
 
@@ -73,12 +73,12 @@ export default class Slider extends Component<Props, State> {
 
   activateAutoplay = () => {
     this.enableAutoplay();
-    this._node.addEventListener('mouseleave', this.enableAutoplay);
-    this._node.addEventListener('mouseenter', this.disableAutoplay);
+    this._node && this._node.addEventListener('mouseleave', this.enableAutoplay);
+    this._node && this._node.addEventListener('mouseenter', this.disableAutoplay);
   };
 
   updateAutoplay = () => {
-    if (!isScrolledIntoView(this._node)) {
+    if (!this._node || !isScrolledIntoView(this._node)) {
       this._interval && window.clearInterval(this._interval);
       this._interval = 0;
     } else if (!this._interval) {
@@ -96,8 +96,8 @@ export default class Slider extends Component<Props, State> {
   };
 
   deactivateAutoplay = () => {
-    this._node.removeEventListener('mouseleave', this.enableAutoplay);
-    this._node.removeEventListener('mouseenter', this.disableAutoplay);
+    this._node && this._node.removeEventListener('mouseleave', this.enableAutoplay);
+    this._node && this._node.removeEventListener('mouseenter', this.disableAutoplay);
     this.disableAutoplay();
   };
 
@@ -119,7 +119,7 @@ export default class Slider extends Component<Props, State> {
     return (
       <div className={styles.root}>
         <div className={styles.wrapper}>
-          <div className={styles.inner} ref={(ref: HTMLDivElement) => (this._node = ref)}>
+          <div className={styles.inner} ref={(ref) => (this._node = ref)}>
             <button type="button" className={styles.previous} onClick={this.previous}>
               <div className={styles.iconWrapper}>
                 <Icon name="chevron-circle-left" className={styles.icon} />

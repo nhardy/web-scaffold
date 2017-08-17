@@ -18,14 +18,14 @@ export default class SiteHeader extends Component<Props, void> {
   };
 
   componentDidMount() {
-    dismissEvents.forEach(type => this._node.addEventListener(type, this.handleDismiss));
+    dismissEvents.forEach(type => this._node && this._node.addEventListener(type, this.handleDismiss));
   }
 
   componentWillUnmount() {
-    dismissEvents.forEach(type => this._node.removeEventListener(type, this.handleDismiss));
+    dismissEvents.forEach(type => this._node && this._node.removeEventListener(type, this.handleDismiss));
   }
 
-  _node: HTMLDivElement;
+  _node: ?HTMLDivElement;
 
   listeners: Array<() => void> = [];
 
@@ -45,7 +45,7 @@ export default class SiteHeader extends Component<Props, void> {
     // @see: https://github.com/yannickcr/eslint-plugin-react/issues/1138
     /* eslint-disable react/prop-types */
     return (
-      <div className={cx(styles.root, this.props.className)} ref={(ref: HTMLDivElement) => (this._node = ref)} />
+      <div className={cx(styles.root, this.props.className)} ref={(ref) => (this._node = ref)} />
     );
   }
 }
