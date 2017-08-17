@@ -1,10 +1,10 @@
 import React from 'react';
-import type { Element } from 'react';
+import type { Node } from 'react';
 
 import styles from './styles.styl';
 
 
-const Breakout = ({ children }: { children: Element<*> }) => (
+const Breakout = ({ children }: { children: Node }) => (
   <div className={styles.root}>
     <div className={styles.inner}>
       {children}

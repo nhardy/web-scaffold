@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import React, { Children, Component } from 'react';
-import type { Element } from 'react';
+import type { Node } from 'react';
 import cx from 'classnames';
 import { debounce } from 'lodash-es';
 
@@ -12,17 +12,11 @@ import Spacer from 'app/components/Spacer';
 import styles from './styles.styl';
 
 
-type DefaultProps = {
-  autoplay: false;
-  duration: 500,
-  interval: 3000,
-};
-
 type Props = {
   autoplay: boolean;
   duration: number,
   interval: number,
-  children: Element<*>,
+  children: Node,
 };
 
 type State = {
@@ -30,7 +24,7 @@ type State = {
   length: number,
 };
 
-export default class Slider extends Component<DefaultProps, Props, State> {
+export default class Slider extends Component<Props, State> {
   static defaultProps = {
     autoplay: false,
     duration: 500,
@@ -137,6 +131,7 @@ export default class Slider extends Component<DefaultProps, Props, State> {
               </div>
             </button>
             <div className={styles.slider} style={{ transform: `translateX(${this.state.index * -100}%)`, transitionDuration: `${duration}ms` }}>
+              {/* $FlowFixMe */}
               {Children.toArray(children).map(slide => (
                 <div className={styles.slide} key={slide.key}>
                   {slide}
@@ -145,6 +140,7 @@ export default class Slider extends Component<DefaultProps, Props, State> {
             </div>
             <div className={styles.fader} />
             <div className={styles.pagination}>
+              {/* $FlowFixMe */}
               {Children.toArray(children).map((slide, index) => (
                 <button key={slide.key} type="button" className={cx(styles.dot, { [styles.current]: index === this.state.index })} onClick={() => this.goto(index)} />
               ))}

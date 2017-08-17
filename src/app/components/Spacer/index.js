@@ -8,10 +8,6 @@ import { debounce } from 'lodash-es';
 import styles from './styles.styl';
 
 
-type DefaultProps = {
-  ratio: number,
-};
-
 type Props = {
   className: string,
   ratio: number,
@@ -22,7 +18,7 @@ type State = {
 };
 
 export default class Spacer extends PureComponent<Props, State> {
-  static defaultProps: DefaultProps = {
+  static defaultProps = {
     ratio: 16 / 9,
   };
 

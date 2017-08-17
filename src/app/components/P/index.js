@@ -1,9 +1,8 @@
 // @flow
-
 /* eslint-disable react/prop-types */
 
 import React, { Component } from 'react';
-import type { Element } from 'react';
+import type { Node } from 'react';
 import cx from 'classnames';
 
 import { isScrolledIntoView } from 'app/lib/dom';
@@ -13,14 +12,14 @@ import styles from './styles.styl';
 
 type Props = {
   className?: string,
-  children?: Element<*>,
+  children?: Node,
 };
 
 type State = {
   visible: boolean,
 };
 
-export default class P extends Component<void, Props, State> {
+export default class P extends Component<Props, State> {
   state = {
     visible: false,
   };

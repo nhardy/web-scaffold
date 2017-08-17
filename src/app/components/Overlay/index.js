@@ -12,7 +12,7 @@ type Props = {
 
 const dismissEvents = ['click', 'touchstart'];
 
-export default class SiteHeader extends Component<Props, Props, void> {
+export default class SiteHeader extends Component<Props, void> {
   static defaultProps = {
     className: undefined,
   };

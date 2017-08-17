@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import React, { Children, Component, cloneElement } from 'react';
-import type { Element } from 'react';
+import type { Node } from 'react';
 import cx from 'classnames';
 
 import timeout from 'app/lib/timeout';
@@ -10,13 +10,9 @@ import FontAwesome from 'app/components/FontAwesome';
 import styles from './styles.styl';
 
 
-type DefaultProps = {
-  duration: 500,
-};
-
 type Props = {
   duration: number,
-  children: Element<*>,
+  children: Node,
 };
 
 type State = {
@@ -26,7 +22,7 @@ type State = {
   loading: boolean;
 };
 
-export default class SlidingStages extends Component<DefaultProps, Props, State> {
+export default class SlidingStages extends Component<Props, State> {
   static defaultProps = {
     duration: 500,
   };
@@ -100,6 +96,7 @@ export default class SlidingStages extends Component<DefaultProps, Props, State>
             transition: `transform ${duration}ms ease-in-out, filter 250ms ease-in-out`,
           }}
         >
+          {/* $FlowFixMe */}
           {Children.toArray(children).map((stage, i) => (
             <div key={stage.key} className={styles.stage}>
               {cloneElement(stage, { complete: (wait?: Promise<void>) => this.complete(i, wait) })}
@@ -107,6 +104,7 @@ export default class SlidingStages extends Component<DefaultProps, Props, State>
           ))}
         </div>
         <div className={cx(styles.pagination, styles.blur, { [styles.blurred]: loading })}>
+          {/* $FlowFixMe */}
           {Children.toArray(children).map((stage, i) => (
             <button
               key={stage.key}
