@@ -10,12 +10,29 @@ jobs:
       # - run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
       # - run: sudo apt-get update
       # - run: sudo apt-get install -y libstdc++-4.9-dev
+      - checkout
+      - restore_cache:
+        requires:
+          - checkout
+        keys:
+          - v1-npm-deps-{{ checksum "package.json" }}
       - run:
         name: Installing npm dependencies
         command: npm install --no-progress --quiet
+      - save_cache:
+        key: v1-npm-deps-{{ checksum "package.json" }}
+        paths:
+          - node_modules
+      - persist_to_workspace:
+        root: .
+        paths:
+          - node_modules
   lint:
     <<: *JOB_DEFAULTS
     steps:
+      - checkout
+      - attach_workspace:
+        at: .
       # - run: mkdir -p $CIRCLE_TEST_REPORTS/reports
       - run:
         name: Running lint checking
@@ -24,12 +41,18 @@ jobs:
   flow:
     <<: *JOB_DEFAULTS
     steps:
+      - checkout
+      - attach_workspace:
+        at: .
       - run:
         name: Running flow static type checking
         command: npm run flow
   coverage:
     <<: *JOB_DEFAULTS
     steps:
+      - checkout
+      - attach_workspace:
+        at: .
       - run: mkdir -p $CIRCLE_ARTIFACTS/coverage
       - run:
         name: Running tests and collecting code coverage results
@@ -40,6 +63,9 @@ jobs:
   deploy:
     <<: *JOB_DEFAULTS
     steps:
+      - checkout
+      - attach_workspace:
+        at: .
       - run:
         name: Deploying to Azure App Service
         command: npm run deploy
@@ -47,19 +73,7 @@ workflows:
   version: 2
   test-and-deploy:
     jobs:
-      - checkout
-      - restore_cache:
-        requires:
-          - checkout
-        keys:
-          - v1-npm-deps-{{ checksum "package.json" }}
-      - dependencies:
-        requires:
-          - restore_cache
-      - save_cache:
-        key: v1-npm-deps-{{ checksum "package.json" }}
-        paths:
-          - node_modules
+      - dependencies
       - lint:
         requires:
           - dependencies
