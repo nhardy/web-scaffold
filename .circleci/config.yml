@@ -75,19 +75,19 @@ workflows:
     jobs:
       - dependencies
       - lint:
-        requires:
-          - dependencies
-      # - flow:
-      #   requires:
-      #     - dependencies
-      # - coverage:
-      #   requires:
-      #     - dependencies
-      # - deploy:
-      #   requires:
-      #     - lint
-      #     - flow
-      #     - coverage
-      #   filters:
-      #     branches:
-      #       only: master
+          requires:
+            - dependencies
+      - flow:
+          requires:
+            - dependencies
+      - coverage:
+          requires:
+            - dependencies
+      - deploy:
+          requires:
+            - lint
+            - flow
+            - coverage
+        filters:
+          branches:
+            only: master
