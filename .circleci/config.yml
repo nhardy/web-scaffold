@@ -12,41 +12,39 @@ jobs:
       # - run: sudo apt-get install -y libstdc++-4.9-dev
       - checkout
       - restore_cache:
-        requires:
-          - checkout
-        keys:
-          - v1-npm-deps-{{ checksum "package.json" }}
+          keys:
+            - v1-npm-deps-{{ checksum "package.json" }}
       - run:
-        name: Installing npm dependencies
-        command: npm install --no-progress --quiet
+          name: Installing npm dependencies
+          command: npm install --no-progress --quiet
       - save_cache:
-        key: v1-npm-deps-{{ checksum "package.json" }}
-        paths:
-          - node_modules
+          key: v1-npm-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - persist_to_workspace:
-        root: .
-        paths:
-          - node_modules
+          root: .
+          paths:
+            - node_modules
   lint:
     <<: *JOB_DEFAULTS
     steps:
       - checkout
       - attach_workspace:
-        at: .
+          at: .
       # - run: mkdir -p $CIRCLE_TEST_REPORTS/reports
       - run:
-        name: Running lint checking
-        # command: npm run lint -- --format junit --output-file $CIRCLE_TEST_REPORTS/reports/eslint.xml
-        command: npm run lint
+          name: Running lint checking
+          # command: npm run lint -- --format junit --output-file $CIRCLE_TEST_REPORTS/reports/eslint.xml
+          command: npm run lint
   flow:
     <<: *JOB_DEFAULTS
     steps:
       - checkout
       - attach_workspace:
-        at: .
+          at: .
       - run:
-        name: Running flow static type checking
-        command: npm run flow
+          name: Running flow static type checking
+          command: npm run flow
   coverage:
     <<: *JOB_DEFAULTS
     steps:
@@ -65,10 +63,10 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-        at: .
+          at: .
       - run:
-        name: Deploying to Azure App Service
-        command: npm run deploy
+          name: Deploying to Azure App Service
+          command: npm run deploy
 workflows:
   version: 2
   test-and-deploy:
