@@ -1,0 +1,79 @@
+JOB_DEFAULTS: &JOB_DEFAULTS
+  docker:
+    - image: node:8
+
+version: 2
+jobs:
+  dependencies:
+    <<: *JOB_DEFAULTS
+    steps:
+      # - run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+      # - run: sudo apt-get update
+      # - run: sudo apt-get install -y libstdc++-4.9-dev
+      - run:
+        name: Installing npm dependencies
+        command: npm install --no-progress --quiet
+  lint:
+    <<: *JOB_DEFAULTS
+    steps:
+      # - run: mkdir -p $CIRCLE_TEST_REPORTS/reports
+      - run:
+        name: Running lint checking
+        # command: npm run lint -- --format junit --output-file $CIRCLE_TEST_REPORTS/reports/eslint.xml
+        command: npm run lint
+  flow:
+    <<: *JOB_DEFAULTS
+    steps:
+      - run:
+        name: Running flow static type checking
+        command: npm run flow
+  coverage:
+    <<: *JOB_DEFAULTS
+    steps:
+      - run: mkdir -p $CIRCLE_ARTIFACTS/coverage
+      - run:
+        name: Running tests and collecting code coverage results
+        command: ./node_modules/.bin/nyc --report-dir $CIRCLE_ARTIFACTS/coverage --reporter lcov --reporter text npm test -- --reporter mocha-junit-reporter
+        environment:
+          NODE_ENV: test
+          MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
+  deploy:
+    <<: *JOB_DEFAULTS
+    steps:
+      - run:
+        name: Deploying to Azure App Service
+        command: npm run deploy
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - checkout
+      - restore_cache:
+        requires:
+          - checkout
+        keys:
+          - v1-npm-deps-{{ checksum "package.json" }}
+      - dependencies:
+        requires:
+          - restore_cache
+      - save_cache:
+        key: v1-npm-deps-{{ checksum "package.json" }}
+        paths:
+          - node_modules
+      - lint:
+        requires:
+          - dependencies
+      - flow:
+        requires:
+          - dependencies
+      - coverage:
+        requires:
+          - dependencies
+      - deploy:
+        requires:
+          - lint
+          - flow
+          - coverage
+        filters:
+          branches:
+            only: master
