@@ -61,7 +61,7 @@ export default class YouTube extends Component<Props, void> {
     this.props.onReady();
   };
 
-  onPlayerStateChange = (event) => {
+  onPlayerStateChange = (event: {}) => {
     this.props.onStateChange(event);
   };
 
@@ -70,6 +70,7 @@ export default class YouTube extends Component<Props, void> {
   player: null | {
     loadVideoById: (videoId: string) => void,
     cueVideoById: (videoId: string) => void,
+    destroy: () => void,
   };
 
   render() {
