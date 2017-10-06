@@ -7,6 +7,7 @@ import config from 'app/config';
 import { makeTitle } from 'app/lib/social';
 import DefaultLayout from 'app/layouts/Default';
 import P from 'app/components/P';
+import YouTube from 'app/components/YouTube';
 import styles from './styles.styl';
 
 
@@ -64,8 +65,9 @@ const GovHackView = () => (
       {' '}
       or watch the
       {' '}
-      <a href="https://youtu.be/fhVv2PB7Hg4" target="_blank" rel="noopener noreferrer">video pitch</a>.
+      <a href="https://youtu.be/fhVv2PB7Hg4" target="_blank" rel="noopener noreferrer">video pitch</a> below.
     </P>
+    <YouTube className={styles.player} videoId="fhVv2PB7Hg4" />
     <h2><a href="https://www.twitter.com/GovHackSydney" target="_blank" rel="noopener noreferrer">GovHackSydney</a> 2016</h2>
     <P className={styles.paragraph}>
       For GovHack 2016, our team, <em>{'//'}no&nbsp;comment</em> built a social network, entitled &quot;Tagger&quot;.
@@ -79,8 +81,9 @@ const GovHackView = () => (
       {' '}
       or watch the
       {' '}
-      <a href="https://youtu.be/3ne1Qaaas3g" target="_blank" rel="noopener noreferrer">video pitch</a>.
+      <a href="https://youtu.be/3ne1Qaaas3g" target="_blank" rel="noopener noreferrer">video pitch</a> below.
     </P>
+    <YouTube className={styles.player} videoId="3ne1Qaaas3g" />
   </DefaultLayout>
 );
 
