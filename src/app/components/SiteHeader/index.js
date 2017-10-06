@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import cx from 'classnames';
@@ -14,11 +15,16 @@ const EVENTS = [
   'resize',
 ];
 
-export default class SiteHeader extends Component {
-  static propTypes = {
-    threshold: PropTypes.func,
-  };
+type Props = {
+  threshold: () => number,
+  headerRef: (?HTMLElement) => void,
+};
 
+type State = {
+  scrolled: boolean,
+};
+
+export default class SiteHeader extends Component<Props, State> {
   static defaultProps = {
     threshold: () => window.innerHeight / 3,
   };
@@ -44,9 +50,10 @@ export default class SiteHeader extends Component {
   });
 
   render() {
+    const { headerRef } = this.props;
     const { scrolled } = this.state;
     return (
-      <header id="siteHeader" className={cx(styles.root, { [styles.scrolled]: scrolled })}>
+      <header id="siteHeader" className={cx(styles.root, { [styles.scrolled]: scrolled })} ref={ref => headerRef(ref)}>
         <div className={cx(styles.wrapper)}>
           <label htmlFor="drawer" className={styles.hamburger}>
             <FontAwesome className="fa-bars" />

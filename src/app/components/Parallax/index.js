@@ -1,31 +1,39 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import React, { Component } from 'react';
+import type { Node } from 'react';
 import cx from 'classnames';
+import { noop } from 'lodash-es';
 
 import throttle from 'app/lib/throttle';
 import { isScrolledIntoView } from 'app/lib/dom';
 import styles from './styles.styl';
 
 
+type Props = {
+  className: ?string,
+  children: Node,
+  componentRef: (?HTMLDivElement) => void,
+  src: string,
+  srcSet: ?string,
+  sizes: ?string,
+  alt: string,
+};
+
+type State = {
+  style: {
+    perspectiveOrigin: string,
+  },
+};
+
 const EVENTS = [
   'scroll',
   'resize',
 ];
 
-export default class Parallax extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    src: PropTypes.string.isRequired,
-    srcSet: PropTypes.string,
-    sizes: PropTypes.string,
-    alt: PropTypes.string.isRequired,
-  };
-
+export default class Parallax extends Component<Props, State> {
   static defaultProps = {
-    className: undefined,
-    srcSet: undefined,
-    sizes: undefined,
+    componentRef: noop,
   };
 
   state = {
@@ -44,8 +52,15 @@ export default class Parallax extends Component {
     this.update.cancel();
   }
 
+  setRef = (ref: ?HTMLDivElement) => {
+    this._node = ref;
+    this.props.componentRef(ref);
+  };
+
+  _node: ?HTMLDivElement;
+
   update = throttle(() => {
-    if (!isScrolledIntoView(this._node)) return;
+    if (!this._node || !isScrolledIntoView(this._node)) return;
 
     const perspectiveOrigin = `center ${window.scrollY}px`;
     this.setState({ style: { perspectiveOrigin } });
@@ -54,7 +69,7 @@ export default class Parallax extends Component {
   render() {
     const { className, children, src, srcSet, sizes, alt } = this.props;
     return (
-      <div ref={ref => (this._node = ref)} className={cx(styles.root, className)} style={this.state.style}>
+      <div ref={ref => this.setRef(ref)} className={cx(styles.root, className)} style={this.state.style}>
         <img className={styles.background} src={src} srcSet={srcSet} sizes={sizes} alt={alt} />
         <div className={styles.foreground}>
           {children}

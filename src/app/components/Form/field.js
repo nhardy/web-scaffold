@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import getDisplayName from 'react-display-name';
-import { omit } from 'lodash-es';
+import { noop, omit } from 'lodash-es';
 
 import { _formShape } from './form';
 
@@ -26,7 +26,7 @@ export default function field() {
     };
 
     static defaultProps = {
-      withRef: false,
+      withRef: noop,
     };
 
     state = {
@@ -34,7 +34,7 @@ export default function field() {
     };
 
     componentDidMount() {
-      this.props.withRef && this.props.withRef(this._field);
+      this.props.withRef(this._field);
       this.context.form.updateField(this.props.name, {
         component: this,
         value: this.getValue(),
@@ -43,7 +43,7 @@ export default function field() {
     }
 
     componentWillUnmount() {
-      this.props.withRef && this.props.withRef(null);
+      this.props.withRef(null);
       this.context.form.removeField(this.props.name);
     }
 

@@ -1,7 +1,7 @@
 // @flow
 
 // eslint-disable-next-line import/prefer-default-export
-export function isScrolledIntoView(el: HTMLElement): boolean {
+export function isScrolledIntoView(el: Element): boolean {
   const { top, left, bottom, right } = el.getBoundingClientRect();
 
   return bottom >= 0

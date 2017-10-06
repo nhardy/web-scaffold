@@ -18,7 +18,7 @@ scriptsManager(store);
 const mountPoint = document.getElementById('root');
 
 function render(Component = Root) {
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <AppContainer>
       <Component store={store} history={history} />
     </AppContainer>,

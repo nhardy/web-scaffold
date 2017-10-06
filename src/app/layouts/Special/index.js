@@ -85,7 +85,7 @@ export default class SpecialLayout extends Component {
   render() {
     return (
       <div className={styles.root}>
-        <SiteHeader ref={ref => (this._header = ref)} />
+        <SiteHeader headerRef={ref => (this._header = ref)} />
         <input ref={ref => (this._checkbox = ref)} className={styles.checkbox} id="drawer" type="checkbox" />
         <Drawer className={styles.drawer} />
         <Overlay ref={ref => (this._overlay = ref)} className={styles.overlay} />

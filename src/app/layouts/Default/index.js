@@ -39,12 +39,12 @@ export default class DefaultLayout extends Component {
   render() {
     return (
       <div className={styles.root}>
-        <SiteHeader ref={ref => (this._header = ref)} threshold={this.calculateScrollThreshold} />
+        <SiteHeader headerRef={ref => (this._header = ref)} threshold={this.calculateScrollThreshold} />
         <input ref={ref => (this._checkbox = ref)} className={styles.checkbox} id="drawer" type="checkbox" />
         <Drawer className={styles.drawer} />
         <Overlay ref={ref => (this._overlay = ref)} className={styles.overlay} />
         <Parallax
-          ref={ref => (this._parallax = ref)}
+          componentRef={ref => (this._parallax = ref)}
           className={styles.parallax}
           src={hero}
           srcSet={`${hero} 1x, ${hero2x} 2x, ${hero3x} 3x`}
