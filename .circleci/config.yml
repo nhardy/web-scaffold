@@ -13,12 +13,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-npm-deps-{{ checksum "package.json" }}
+            - v1-npm-deps-{{ arch }}-{{ checksum "package.json" }}
       - run:
           name: Installing npm dependencies
           command: npm install --no-progress --quiet
       - save_cache:
-          key: v1-npm-deps-{{ checksum "package.json" }}
+          key: v1-npm-deps-{{ arch }}-{{ checksum "package.json" }}
           paths:
             - node_modules
       - persist_to_workspace:
