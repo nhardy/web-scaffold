@@ -11455,9 +11455,9 @@
       }
     },
     "redux-scripts-manager": {
-      "version": "0.3.2",
-      "resolved": "https://registry.npmjs.org/redux-scripts-manager/-/redux-scripts-manager-0.3.2.tgz",
-      "integrity": "sha512-Oxr5QBkGcqKa1PQ7R/IPzkuM0iJXSMpVEMmfZc8JIMuNv0jRzvHngb9FhKib9zCImMyJD/I96/JjqX1PIjJw7g==",
+      "version": "0.3.3",
+      "resolved": "https://registry.npmjs.org/redux-scripts-manager/-/redux-scripts-manager-0.3.3.tgz",
+      "integrity": "sha512-RtOc0aFMnZNoOK0xOcstFzr3q9xWOdwuWaUn9A6BC9c6usxZjRumiqPQT5QjdownhY+cjofIGuPBINHrpZo/hA==",
       "requires": {
         "lodash": "4.17.4",
         "sha1": "1.1.1"
