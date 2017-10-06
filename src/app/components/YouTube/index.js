@@ -14,8 +14,8 @@ type Props = {
   className: ?string,
   videoId: string,
   autoplay: boolean,
-  onReady: null | () => void,
-  onStateChange: null | (event: {}) => void,
+  onReady: () => void,
+  onStateChange: (event: {}) => void,
   loadScript: (src: string, callbackName: string) => Promise<void>,
 };
 
