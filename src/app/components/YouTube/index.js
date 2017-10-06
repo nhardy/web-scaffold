@@ -67,6 +67,11 @@ export default class YouTube extends Component<Props, void> {
 
   _container: ?HTMLDivElement;
 
+  player: null | {
+    loadVideoById: (videoId: string) => void,
+    cueVideoById: (videoId: string) => void,
+  };
+
   render() {
     return (
       <div className={cx(styles.root, this.props.className)}>
