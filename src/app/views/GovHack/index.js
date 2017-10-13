@@ -44,7 +44,7 @@ const GovHackView = () => (
         data journalism project
       </a>
       {' '}
-      using a number of datasets, including the New Zealand Census (Stats NZ), clectricity pricing history, and
+      using a number of datasets, including the New Zealand Census (Stats NZ), electricity pricing history, and
       {' '}
       <a
         href="https://github.com/Phil-Wheeler/govhack-dunedin/tree/0b45ecbf0f808ee335acceaad56fa27e7417d201/data"

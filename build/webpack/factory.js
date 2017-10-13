@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { identity, noop } from 'lodash-es';
+import hash from 'string-hash';
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
@@ -117,6 +118,18 @@ const cssLoaders = ({ production, client }) => {
     },
   ];
 };
+
+const svgoOptions = {
+  plugins: [],
+  floatPrecision: 2,
+};
+
+const svgoCleanupIdsPlugin = resource => ({
+  cleanupIDs: {
+    // Prevent inline svgs having conflicting ids
+    prefix: `svg${hash(path.relative(__dirname, resource))}-`,
+  },
+});
 
 export default function webpackFactory({ production = false, client = false, writeManifestCallback = noop }) {
   return {
@@ -236,12 +249,17 @@ export default function webpackFactory({ production = false, client = false, wri
                 name: '[name]-[hash:6].[ext]',
               },
             },
-            {
+            ({ resource }) => ({
               loader: 'svgo-loader',
               options: {
-                plugins: [{ removeTitle: true }],
+                ...svgoOptions,
+                plugins: [
+                  ...svgoOptions.plugins,
+                  svgoCleanupIdsPlugin(resource),
+                  { removeTitle: true },
+                ],
               },
-            },
+            }),
           ],
         },
         {
@@ -251,13 +269,19 @@ export default function webpackFactory({ production = false, client = false, wri
               loader: 'babel-loader',
               options: babelrc,
             },
-            {
+            ({ resource }) => ({
               loader: 'react-svg-loader',
               options: {
-                plugins: [{ removeTitle: false }],
-                floatPrecision: 2,
+                svgo: {
+                  ...svgoOptions,
+                  plugins: [
+                    ...svgoOptions.plugins,
+                    svgoCleanupIdsPlugin(resource),
+                    { removeTitle: false },
+                  ],
+                },
               },
-            },
+            }),
           ],
         },
         {
