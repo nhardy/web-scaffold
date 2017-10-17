@@ -13,6 +13,9 @@ import CurriculumVitaeView from 'app/views/CurriculumVitae';
 import GovHackView from 'app/views/GovHack';
 import ErrorView from 'app/views/Error';
 
+// eslint-disable-next-line import/no-commonjs
+const TestView = __DEVELOPMENT__ ? require('app/views/Test').default : null;
+
 
 export default function getRoutes(store: ReduxStore) {
   const onChange = () => {
@@ -27,6 +30,7 @@ export default function getRoutes(store: ReduxStore) {
       <Route path="/contact" component={ContactView} />
       <Route path="/cv" component={CurriculumVitaeView} />
       <Route path="/govhack" component={GovHackView} />
+      {__DEVELOPMENT__ && <Route path="/test" component={TestView} />}
       <Route path="*" component={ErrorView} status={404} />
     </Route>
   );

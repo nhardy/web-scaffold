@@ -1,0 +1,32 @@
+@import '~app/assets/stylus'
+
+
+.root
+  composes: styleguide from 'app/assets/stylus/common.styl'
+
+.stationary
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  width: 100%
+  background: rgba($black, 0.7)
+  color: $white
+  font-size: 40vh
+
+.essay
+  p
+    margin: 0 auto
+    border-radius: 2px
+    padding: 16px
+    width: 300px
+    text-align: center
+    background: rgba($black, 0.7)
+    color: $white
+    font-size: 24px
+
+    +from($med)
+      width: 400px
+
+    +from($lge)
+      width: 650px
