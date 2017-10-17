@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import { get, orderBy } from 'lodash-es';
+import { get } from 'lodash-es';
 
 import config from 'app/config';
 import { setRouteError } from 'app/actions/routeError';
@@ -35,7 +35,7 @@ const DESCRIPTION = [
 
       if (loaded()) return;
 
-      await dispatch(getReposByUsername(config.github.username));
+      await dispatch(getReposByUsername(config.github.username, { sort: 'pushed' }));
 
       if (!loaded()) {
         dispatch(setRouteError({ status: 500 }));
@@ -44,9 +44,9 @@ const DESCRIPTION = [
   },
 ])
 @connect(state => ({
-  repos: orderBy(state.github.reposByUsername[config.github.username].owner.value.filter(({ fork }) => !fork), ['pushed_at'], ['desc']),
+  repos: state.github.reposByUsername[config.github.username].owner.value.filter(({ fork }) => !fork),
 }))
-export default class ProjectsView extends Component { // eslint-disable-line react/prefer-stateless-function
+export default class ProjectsView extends Component {
   static propTypes = {
     repos: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string,
@@ -92,6 +92,7 @@ export default class ProjectsView extends Component { // eslint-disable-line rea
               <GitHubRepo key={repo.id} repo={repo} />
             </li>
           ))}
+          {/* TODO: Pagination */}
         </ul>
         <h2>Snapshot Portfolio</h2>
         <Breakout>

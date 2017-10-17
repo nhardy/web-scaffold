@@ -12,6 +12,7 @@ type ReposByUserNameParams = {
   direction?: 'asc' | 'desc',
 };
 
+// TODO: Pagination
 export function getReposByUsername(username: string, { type = 'owner', sort = 'full_name', direction }: ReposByUserNameParams = {}) {
   const params = { type, sort, direction };
 
