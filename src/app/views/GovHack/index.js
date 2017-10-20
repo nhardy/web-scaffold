@@ -21,7 +21,6 @@ const GovHackView = () => (
   <DefaultLayout className={styles.root}>
     <Helmet>
       <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
       <meta property="og:title" content={makeTitle(TITLE)} />
       <meta property="og:description" content={DESCRIPTION} />
       <meta name="twitter:card" content="summary" />
@@ -59,20 +58,22 @@ const GovHackView = () => (
       <a href="https://www.dunedin.govt.nz/" target="_blank" rel="noopener noreferrer">Dunedin City Council</a>.
     </P>
     <P className={styles.paragraph}>
+      Our submission was awarded two cash prizes, totalling NZ$1500 - the Open Government prize and the Dunedin City Council prize.
+      {' '}
       You can read our submission &quot;South of 45&quot; on the
       {' '}
       <a href="https://2017.hackerspace.govhack.org/project/south-45" target="_blank" rel="noopener noreferrer">hackerspace</a>,
       {' '}
       or watch the
       {' '}
-      <a href="https://youtu.be/fhVv2PB7Hg4" target="_blank" rel="noopener noreferrer">video pitch</a> below.
+      <a href="https://youtu.be/fhVv2PB7Hg4" target="_blank" rel="noopener noreferrer">video pitch</a> that we submitted below.
     </P>
     <YouTube className={styles.player} videoId="fhVv2PB7Hg4" />
     <h2><a href="https://www.twitter.com/GovHackSydney" target="_blank" rel="noopener noreferrer">GovHackSydney</a> 2016</h2>
     <P className={styles.paragraph}>
       For GovHack 2016, our team, <em>{'//'}no&nbsp;comment</em> built a social network, entitled &quot;Tagger&quot;.
       {' '}
-      Tagger allowed individuals to tag (namesake) messages at points of interest described by the NSW POI database.
+      Tagger allowed individuals to tag (its namesake) messages at points of interest described by the NSW POI database.
     </P>
     <P className={styles.paragraph}>
       You can read our submission on the

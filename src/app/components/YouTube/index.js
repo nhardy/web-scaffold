@@ -76,8 +76,10 @@ export default class YouTube extends Component<Props, void> {
   render() {
     return (
       <div className={cx(styles.root, this.props.className)}>
-        <Spacer className={styles.spacer} ratio={16 / 9} />
-        <div className={styles.player} ref={ref => (this._container = ref)} />
+        <div className={styles.wrapper}>
+          <Spacer className={styles.spacer} ratio={16 / 9} />
+          <div className={styles.player} ref={ref => (this._container = ref)} />
+        </div>
       </div>
     );
   }

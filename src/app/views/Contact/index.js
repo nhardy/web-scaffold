@@ -19,7 +19,7 @@ import styles from './styles.styl';
 
 const TITLE = 'Contact Me';
 const DESCRIPTION = [
-  'Get in contact with Sydney-based student and developer, Nathan Hardy.',
+  'Get in contact with Nathan Hardy.',
   'Leave me a message and I\'ll endeavour to get back to you.',
 ].join(' ');
 
@@ -90,7 +90,6 @@ export default class ContactView extends Component {
       <DefaultLayout className={styles.root}>
         <Helmet>
           <title>{TITLE}</title>
-          <meta name="description" content={DESCRIPTION} />
           <meta property="og:title" content={makeTitle(TITLE)} />
           <meta property="og:description" content={DESCRIPTION} />
           <meta name="twitter:card" content="summary" />
@@ -101,8 +100,13 @@ export default class ContactView extends Component {
         {!sent ? (
           <form className={formStyles.form}>
             <h1>Contact Me</h1>
+            <P className={styles.paragraph}>
+              If you&apos;re a business or recruiter, this is a great way to get in contact with me about work opportunities.
+              {' '}
+              I am currently in the middle of an exam period at University and apologise if my response is delayed.
+            </P>
             <label className={formStyles.label} htmlFor="contact-name">Name</label>
-            <Text name="name" id="contact-name" pattern=".{2,100}" required placeholder="e.g. John Smith" />
+            <Text name="name" id="contact-name" pattern=".{2,100}" required placeholder="e.g. John Smith" autofocus />
             <label className={formStyles.label} htmlFor="contact-email">Email</label>
             <Email name="email" id="contact-email" required />
             <label className={formStyles.label} htmlFor="contact-subject">Subject</label>
@@ -122,7 +126,7 @@ export default class ContactView extends Component {
               {submitting ? (
                 <span>Sending...</span>
               ) : (
-                <span>Send&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>Send</span>
               )}
             </button>
           </form>

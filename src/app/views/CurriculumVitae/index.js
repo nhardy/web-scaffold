@@ -34,7 +34,6 @@ export default class CurriculumVitae extends Component {
       <DefaultLayout className={styles.root}>
         <Helmet>
           <title>{TITLE}</title>
-          <meta name="description" content={DESCRIPTION} />
           <meta property="og:title" content={makeTitle(TITLE)} />
           <meta property="og:description" content={DESCRIPTION} />
           <meta property="og:image" content={makeAbsoluteUrl(profileImg3x)} />
@@ -75,6 +74,14 @@ export default class CurriculumVitae extends Component {
               <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">University of Technology, Sydney</a>
               {' '}
               with a passion for IT and computer science.
+              {' '}
+              I am currently studying overseas in Dunedin, New Zealand at the
+              {' '}
+              <a href="http://www.otago.ac.nz/" target="_blank" rel="noopener noreferrer">University of Otago</a>
+              {' '}
+              and will complete my studies in November of 2017.
+              {' '}
+              I am soon to graduate and interested in work opportunities in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
             </P>
             <P className={styles.paragraph}>
               I have previously interned at
@@ -83,20 +90,20 @@ export default class CurriculumVitae extends Component {
               {' '}
               as a front end web developer.
               {' '}
-              I have also previously interned and worked at
+              Prior to that, I have interned for and subsequently worked at
               {' '}
-              <a href="http://www.nineentertainmentco.com.au/" target="_blank" rel="noopener noreferrer">Nine Digital</a>,
+              <a href="http://www.nineentertainmentco.com.au/" target="_blank" rel="noopener noreferrer">Nine Digital</a>
               {' '}
-              building the
+              as a full stack developer building the
               {' '}
               <a href="https://www.9now.com.au/">9Now</a>
               {' '}
               <abbr title="Video On Demand">VOD</abbr>
               {' '}
-              website.
+              website and APIs.
             </P>
             <P className={styles.paragraph}>
-              A printer-friendly document with additional information is available upon request through the <Link to="/contact">contact form</Link>.
+              Further information is available upon request through the <Link to="/contact">contact form</Link>.
             </P>
           </div>
         </section>
@@ -108,9 +115,11 @@ export default class CurriculumVitae extends Component {
               <h4 className={styles.position}>Intern at Appliances Online</h4>
               <h5 className={styles.dates}>January 2017 ‐ July 2017</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
-                As part of my university degree, my third year placement is at Appliances Online.
+                As part of my university degree, my third year placement was at Appliances Online.
                 {' '}
-                At Appliances Online, I am working on the website which makes use of .NET Storefront and Angular.
+                At Appliances Online I mainly worked on the website frontend which made use of AngularJS.
+                {' '}
+                Here, I was able to refine my frontend skills and at the same time learn new frameworks and tools.
               </P>
             </div>
             <div className={styles.workplace}>
@@ -119,7 +128,7 @@ export default class CurriculumVitae extends Component {
               <P className={cx(styles.paragraph, styles.duties)}>
                 Upon completion of my internship, I was offered to continue with Mi9 (now Nine Digital)
                 {' '}
-                on the 9Now project -Channel 9&apos;s AVOD catch up and streaming platform.
+                on the 9Now project - Channel 9&apos;s AVOD catch up and streaming platform.
                 I worked with a variety of services that power 9Now.
                 I gathered API requirements for 9Now&apos;s API, working with internal teams.
                 I developed portions of the APIs that power 9Now Website and Apps and worked on the 9Now website,
@@ -131,15 +140,17 @@ export default class CurriculumVitae extends Component {
               <h4 className={styles.position}>Intern at Mi9</h4>
               <h5 className={styles.dates}>July 2015 ‐ December 2015</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
-                As part of my university degree, I am required to complete two 6 month industry placements.
+                As part of my university degree, I was required to complete two 6 month industry placements.
                 {' '}
-                Work at Mi9 consisted of both front and back end work for 9Jumpin and 9Now.
+                Work at Mi9 consisted of both frontend and backend work for 9Jumpin and 9Now.
                 {' '}
                 Work on 9Jumpin consisted of business-as-usual tasks,
                 {' '}
                 as well as show experience builds for high-profile shows such as Channel 9&apos;s The Block.
                 {' '}
-                For a majority of my time working on 9Jumpin, I was the sole developer.
+                For a majority of my time working on 9Jumpin
+                {' '}
+                I was the sole developer with the site in maitenance mode while 9Now was built.
               </P>
             </div>
             <div className={styles.workplace}>
@@ -147,6 +158,8 @@ export default class CurriculumVitae extends Component {
               <h5 className={styles.dates}>April 2015 ‐ September 2015</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 My role in the Macquarie Centre store consisted of store recovery and presentation duties.
+                {' '}
+                My work here concluded when I decided to focus on balancing my academic commitments with my full-time internship at Mi9.
               </P>
             </div>
             <div className={styles.workplace}>
@@ -178,10 +191,10 @@ export default class CurriculumVitae extends Component {
               <h4 className={styles.course}>Study Abroad at University of Otago, Dunedin, New Zealand</h4>
               <h5 className={styles.dates}>July 2017 - November 2017</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
-                For my final semester, I am studying abroad at the
+                For my final semester, I studied abroad at the
                 {' '}
                 <a href="http://www.otago.ac.nz" target="_blank" rel="noopener noreferrer">University of Otago</a>.
-                Here, I am studying Computer Science electives to further my technical understanding in the field.
+                Here, I am studied Computer Science electives to further my technical understanding in the field.
               </P>
             </div>
             <div className={styles.institution}>
@@ -192,7 +205,7 @@ export default class CurriculumVitae extends Component {
               </h4>
               <h5 className={styles.dates}>2015 - 2017</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
-                I am currently studying a Bachelor of Information Technology with the
+                I am a Bachelor of Information Technology student with the
                 {' '}
                 <abbr title="University of Technology, Sydney">UTS</abbr>,
                 {' '}

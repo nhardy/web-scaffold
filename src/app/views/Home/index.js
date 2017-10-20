@@ -16,15 +16,14 @@ import styles from './styles.styl';
 
 const TITLE = 'Home';
 const DESCRIPTION = [
-  'The website of Sydney-based student and developer, Nathan Hardy.',
-  'I work on world-class web applications and services used by millions of Australians.',
+  'The website of web developer, Nathan Hardy.',
+  'I\'ve worked on world-class web applications and services used by millions of Australians.',
 ].join(' ');
 
 const HomeView = () => (
   <SpecialLayout className={styles.root}>
     <Helmet>
       <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
       <meta property="og:title" content={makeTitle(TITLE)} />
       <meta property="og:description" content={DESCRIPTION} />
       <meta name="twitter:card" content="summary" />
@@ -50,11 +49,14 @@ const HomeView = () => (
       <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">University of Technology, Sydney</a>
       {' '}
       with a passion for IT and computer science.
-    </P>
-    <P className={styles.paragraph}>
-      I am currently studying overseas in New Zealand at the
       {' '}
-      <a href="http://www.otago.ac.nz/" target="_blank" rel="noopener noreferrer">University of Otago</a>.
+      I am currently studying overseas in Dunedin, New Zealand at the
+      {' '}
+      <a href="http://www.otago.ac.nz/" target="_blank" rel="noopener noreferrer">University of Otago</a>
+      {' '}
+      and will complete my studies in November of 2017.
+      {' '}
+      I am soon to graduate and interested in work opportunities in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
     </P>
     <P className={styles.paragraph}>
       I have previously interned at
@@ -63,24 +65,31 @@ const HomeView = () => (
       {' '}
       as a front end web developer.
       {' '}
-      I have also previously interned and worked at
+      Prior to that, I have interned for and subsequently worked at
       {' '}
-      <a href="http://www.nineentertainmentco.com.au/" target="_blank" rel="noopener noreferrer">Nine Digital</a>,
+      <a href="http://www.nineentertainmentco.com.au/" target="_blank" rel="noopener noreferrer">Nine Digital</a>
       {' '}
-      building the
+      as a full stack developer building the
       {' '}
       <a href="https://www.9now.com.au/">9Now</a>
       {' '}
       <abbr title="Video On Demand">VOD</abbr>
       {' '}
-      website.
+      website and APIs.
     </P>
     <P className={styles.paragraph}>
-      I have had an interest in computers from a young age and have worked on many small projects, some of which are listed
+      I have had an interest in computers from a young age and have worked on many small projects.
+      {' '}
+      Some of my more recent ones are listed
       {' '}
       <Link to="/projects">here</Link>.
       {' '}
       I am proficient in the use of the git version control system and have used this in a variety of personal and professional projects.
+      {' '}
+      Often in an academic environment, I have found myself
+      <a href="https://gist.github.com/nhardy/05617237c1d3208213bd21749b735277" target="_blank" rel="noopener noreferrer">assisting others</a>
+      {' '}
+      with this occasionally extending into the workplace as well.
       {' '}
       In my time at
       {' '}
@@ -100,14 +109,27 @@ const HomeView = () => (
       {' '}
       etc.
       {' '}
+      I am extremely passionate about this combination of technologies,
+      {' '}
+      and I would look positively upon the opportunity to work with a similar mix in future.
+    </P>
+    <P className={styles.paragraph}>
       This website is an open-source project
       {' '}
       <a href={config.github.repoUrl} target="_blank" rel="noopener noreferrer">available on GitHub</a>.
       {' '}
-      Please note that although the project is open-source, some images and content are copyrighted.
+      Please note that although the project itself is open-source, some images and content are protected by copyright.
     </P>
     <P className={styles.paragraph}>
-      Feel free to take a look at my <Link to="/cv">online curriculum vitæ</Link>, or <Link to="/contact">contact me</Link> if you have any questions.
+      Feel free to take a look at my
+      {' '}
+      <Link to="/cv">online curriculum vitæ</Link>,
+      {' '}
+      or
+      {' '}
+      <Link to="/contact">contact me</Link>
+      {' '}
+      if you have any questions.
     </P>
   </SpecialLayout>
 );

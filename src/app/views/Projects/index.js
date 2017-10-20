@@ -24,7 +24,7 @@ import styles from './styles.styl';
 
 const TITLE = 'Projects';
 const DESCRIPTION = [
-  'Projects worked on by Sydney-based student and developer, Nathan Hardy.',
+  'A list of projects worked on by web developer, Nathan Hardy.',
   'Take a look through a list of GitHub repos and other projects.',
 ].join(' ');
 
@@ -60,7 +60,6 @@ export default class ProjectsView extends Component {
       <DefaultLayout className={styles.root}>
         <Helmet>
           <title>{TITLE}</title>
-          <meta name="description" content={DESCRIPTION} />
           <meta property="og:title" content={makeTitle(TITLE)} />
           <meta property="og:description" content={DESCRIPTION} />
           <meta property="og:image" content={makeAbsoluteUrl(developerProfileImg)} />
@@ -84,7 +83,13 @@ export default class ProjectsView extends Component {
         </P>
         <h2>GitHub</h2>
         <P className={styles.paragraph}>
-          Below are a list of projects that I have created and published to GitHub;
+          Below are a list of projects that I have created and published to GitHub.
+          {' '}
+          I have also contributed to a number of open source JavaScript projects as a result of my professional and personal work,
+          {' '}
+          and you can see these in
+          {' '}
+          <a href="https://github.com/nhardy?tab=repositories&q=&type=fork" target="_blank" rel="noopener noreferrer">my forks on GitHub</a>.
         </P>
         <ul className={styles.repos}>
           {repos.map(repo => (
@@ -92,7 +97,7 @@ export default class ProjectsView extends Component {
               <GitHubRepo key={repo.id} repo={repo} />
             </li>
           ))}
-          {/* TODO: Pagination */}
+          {/* TODO: Pagination/Tabs */}
         </ul>
         <h2>Snapshot Portfolio</h2>
         <Breakout>
@@ -104,7 +109,7 @@ export default class ProjectsView extends Component {
           </Slider>
         </Breakout>
         <P className={styles.paragraph}>
-          The above slider is a <abbr title="Work In Progress">WIP</abbr> that has been created for use in a University assignment.
+          The above slider is a work-in-progress that was created for use in a University assignment.
           {' '}
           Its design is not yet complete, and will be improved for the purposes of this site at a later date.
           {' '}
