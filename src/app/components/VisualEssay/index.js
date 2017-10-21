@@ -50,6 +50,17 @@ export default class VisualEssay extends Component<Props, State> {
     return 0;
   };
 
+  getIndex = () => {
+    const length = Children.count(this.props.children);
+    const found = find(range(length), (i) => {
+      if (!this._slides[i]) return false;
+      const { bottom } = this._slides[i].getBoundingClientRect();
+      return bottom > window.innerHeight / 2;
+    });
+
+    return found === undefined ? length - 1 : found;
+  };
+
   setSlideRef = (index: number, ref: ?HTMLDivElement) => {
     // $FlowFixMe
     this._slides[index] = ref;
@@ -63,14 +74,7 @@ export default class VisualEssay extends Component<Props, State> {
     if (this._node && (this.state.position === 0 || isScrolledIntoView(this._node))) {
       this.setState({
         position: this.getPosition(this._node),
-        index: find(
-          range(Children.count(this.props.children)),
-          (i) => {
-            if (!this._slides[i]) return false;
-            const { top, bottom } = this._slides[i].getBoundingClientRect();
-            return top < 0 && bottom > 0;
-          },
-        ),
+        index: this.getIndex(),
       });
     }
   };
