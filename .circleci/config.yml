@@ -96,10 +96,10 @@ jobs:
           name: Building and packaging the application
           command: npm run package
       - save_cache:
-        key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
-        paths:
-          - .tmp
-          - dist
+          key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - .tmp
+            - dist
 
   acceptance:
     <<: *JOB_DEFAULTS
