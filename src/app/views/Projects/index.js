@@ -44,7 +44,7 @@ const DESCRIPTION = [
   },
 ])
 @connect(state => ({
-  repos: state.github.reposByUsername[config.github.username].owner.value.filter(({ fork }) => !fork),
+  repos: (state.github.reposByUsername[config.github.username].owner.value || []).filter(({ fork }) => !fork),
 }))
 export default class ProjectsView extends Component {
   static propTypes = {

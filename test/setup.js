@@ -8,6 +8,8 @@ import enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
 import pq from 'proxyquire';
+import hook from 'node-hook';
+import Module from 'module';
 
 import './setupJsDom';
 import type { StubsType } from './flowTypes';
@@ -15,6 +17,26 @@ import type { StubsType } from './flowTypes';
 
 addPath(path.resolve(__dirname, '..', 'src'));
 addPath(path.resolve(__dirname, '.'));
+
+[
+  '.css',
+  '.geojson',
+  '.styl',
+].forEach(ext => hook.hook(ext, () => 'module.exports = {};'));
+[
+  '.ico',
+  '.jpg',
+  '.png',
+  '.svg',
+  '.txt',
+].forEach(ext => hook.hook(ext, () => 'module.exports = "__NO_MOCK__";'));
+
+const _ModuleLoad = Module._load;
+Module._load = function moduleLoad(request: string, parent, isMain: boolean) {
+  return /^!!buffer-loader!/.test(request)
+    ? 'module.exports = Buffer.from("__NO_MOCK__");'
+    : _ModuleLoad(request, parent, isMain);
+};
 
 enzyme.configure({ adapter: new Adapter() });
 

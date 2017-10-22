@@ -7,6 +7,10 @@ import contactHandler from 'server/api/handlers/contact';
 
 const apiServer = new Express();
 
+apiServer.get('/healthcheck', (req, res) => {
+  res.send({ status: 'ok' });
+});
+
 apiServer.use('/govhack', govhackApiServer);
 
 apiServer.post('/contact', bodyParser.json(), contactHandler);

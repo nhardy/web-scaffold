@@ -1,0 +1,5 @@
+--require test/babel-register.js
+--require test/setup.js
+--require test/acceptance/setup.js
+test/acceptance/server.js
+--recursive test/acceptance/**/*.spec.js

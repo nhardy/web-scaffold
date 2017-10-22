@@ -1,0 +1,3 @@
+--require test/babel-register.js
+--require test/setup.js
+--recursive test/unit/**/*.spec.js

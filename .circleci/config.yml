@@ -67,6 +67,12 @@ jobs:
       - run:
           name: Deploying to Azure App Service
           command: npm run deploy
+      - run:
+          name: Waiting for the server to be healthy
+          command: for i in `seq 1 12`; do curl --output /dev/null --silent --head --fail $PUBLIC_URL/api/healthcheck && echo "Server is up and healthy" && break; echo "Waiting for server to come up..."; sleep 5; done
+      - run:
+          name: Acceptance Tests (post-deploy)
+          command: ACCEPTANCE_TEST_HOST=$PUBLIC_URL npm run test:acceptance
 workflows:
   version: 2
   test-and-deploy:

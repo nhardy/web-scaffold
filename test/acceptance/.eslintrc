@@ -1,0 +1,7 @@
+{
+  "extends": "nhardy/tests",
+  "globals": {
+    "nock": true,
+    "request": true
+  }
+}

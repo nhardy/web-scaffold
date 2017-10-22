@@ -15,9 +15,9 @@ const Icon = ({ name, className, image = false, ...props }: { name: string, clas
     Svg = null;
   }
 
-  return Svg && (
+  return Svg ? (
     <Svg className={cx(styles.root, { [styles.icon]: !image }, className)} {...props} />
-  );
+  ) : null;
 };
 
 export default Icon;
