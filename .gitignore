@@ -9,3 +9,4 @@ dist
 jsconfig.json
 node_modules
 src/server/server.pem
+*-results.xml

@@ -62,12 +62,8 @@ yargs.command('*', 'Informational message', () => {}, () => {
       .then(runTask('zip', zip))
       .catch(failOnError);
   })
-  .command('deploy', 'Builds and deploys the application to Azure App Service', () => {}, () => {
+  .command('deploy', 'Deploys the pre-built application to the Azure App Service', () => {}, () => {
     Promise.resolve()
-      .then(runTask('clean', clean))
-      .then(runTask('ensure-certificate', ensureCertificate))
-      .then(runTask('webpack-prod', webpackProd))
-      .then(runTask('zip', zip))
       .then(runTask('deploy', deploy))
       .catch(failOnError);
   })
