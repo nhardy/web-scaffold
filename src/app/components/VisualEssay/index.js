@@ -100,7 +100,9 @@ export default class VisualEssay extends Component<Props, State> {
         <div className={cx(styles.slides)}>
           {Children.map(children, (child, i) => (
             <div className={styles.slide} ref={ref => this.setSlideRef(i, ref)}>
-              {child}
+              <div className={styles.inner}>
+                {child}
+              </div>
             </div>
           ))}
         </div>

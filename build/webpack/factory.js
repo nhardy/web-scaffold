@@ -16,6 +16,7 @@ import {
   ProvidePlugin,
 } from 'webpack';
 
+import config from '../../config';
 import packageJson from '../../package.json';
 import WriteManifestPlugin from './plugins/WriteManifestPlugin';
 
@@ -220,6 +221,14 @@ export default function webpackFactory({ production = false, client = false, wri
           ],
         },
         {
+          test: /\.geojson$/,
+          use: [
+            {
+              loader: 'json-loader',
+            },
+          ],
+        },
+        {
           test: /\.styl$/,
           use: stylusLoaders({ production, client }),
         },
@@ -309,6 +318,7 @@ export default function webpackFactory({ production = false, client = false, wri
         __DEVELOPMENT__: !production,
         __SERVER__: !client,
         'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
+        'process.env.PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL || `http://localhost:${config.port}`),
         'process.env.RECAPTCHA_SITEKEY': JSON.stringify(process.env.RECAPTCHA_SITEKEY),
         'process.env.ANALYTICS_TRACKING_ID': JSON.stringify(process.env.ANALYTICS_TRACKING_ID),
         'process.env.PROJECT_HOMEPAGE': JSON.stringify(packageJson.homepage),

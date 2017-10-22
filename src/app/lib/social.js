@@ -8,5 +8,5 @@ export function makeTitle(title: string): string {
 }
 
 export function makeAbsoluteUrl(url: string): string {
-  return url.startsWith('data:') ? url : `${config.baseUrl}${url}`;
+  return url.startsWith('data:') ? url : `${config.publicUrl}${url}`;
 }

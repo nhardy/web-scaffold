@@ -1,5 +1,5 @@
 const appConfig = {
-  baseUrl: 'https://www.example.org',
+  publicUrl: 'https://www.example.org',
   siteName: 'The Site',
 };
 
@@ -23,9 +23,9 @@ describe('Social Lib Utils', () => {
 
   describe('makeAbsoluteUrl', () => {
 
-    it('should prefix a standard url with the baseUrl from the appConfig', () => {
+    it('should prefix a standard url with the publicUrl from the appConfig', () => {
       const path = '/image.jpg';
-      expect(makeAbsoluteUrl(path)).to.equal(`${appConfig.baseUrl}${path}`);
+      expect(makeAbsoluteUrl(path)).to.equal(`${appConfig.publicUrl}${path}`);
     });
 
     context('when the url is a data-uri', () => {

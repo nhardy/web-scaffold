@@ -1,6 +1,6 @@
 export default {
-  port: process.env.PORT || 8000,
-  baseUrl: 'https://nhardy.id.au',
+  port: process.env.PORT || '8000',
+  publicUrl: process.env.PUBLIC_URL,
   siteName: 'nhardy.id.au',
   analytics: {
     trackingId: process.env.ANALYTICS_TRACKING_ID,

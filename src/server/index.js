@@ -6,7 +6,8 @@ import apiServer from 'server/api';
 import mainMiddleware from 'server/middleware/main';
 import errorMiddleware from 'server/middleware/error';
 
-import faviconIco from '!!buffer-loader!app/assets/images/favicon.ico'; // eslint-disable-line
+// eslint-disable-next-line
+import faviconIco from '!!buffer-loader!app/assets/images/favicon.ico';
 import robotsTxt from 'app/assets/robots.txt';
 
 
@@ -72,6 +73,6 @@ if (process.env.HTTPS_ORIGIN) {
 }
 
 let port = config.port;
-if (__DEVELOPMENT__) port += 1;
+if (__DEVELOPMENT__) port = parseInt(config.port, 10) + 1;
 
 server.listen(port);

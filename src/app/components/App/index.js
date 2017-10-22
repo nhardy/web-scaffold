@@ -44,10 +44,10 @@ export default class App extends Component {
     return (
       <div className={styles.root}>
         <Helmet titleTemplate={`%s | ${config.siteName}`} defaultTitle={config.siteName}>
-          <link rel="canonical" href={`${config.baseUrl}${this.props.location.pathname}`} />
+          <link rel="canonical" href={`${config.publicUrl}${this.props.location.pathname}`} />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={makeAbsoluteUrl(faviconPng)} />
-          <meta property="og:url" content={`${config.baseUrl}${this.props.location.pathname}`} />
+          <meta property="og:url" content={`${config.publicUrl}${this.props.location.pathname}`} />
           <meta property="og:site_name" content={config.siteName} />
         </Helmet>
         {this.props.routeError ? (

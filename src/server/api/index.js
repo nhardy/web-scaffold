@@ -1,10 +1,13 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 
+import govhackApiServer from 'server/api/govhack';
 import contactHandler from 'server/api/handlers/contact';
 
 
 const apiServer = new Express();
+
+apiServer.use('/govhack', govhackApiServer);
 
 apiServer.post('/contact', bodyParser.json(), contactHandler);
 
@@ -14,10 +17,9 @@ apiServer.use((req, res, next) => {
   next(error);
 });
 
-apiServer.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  let { status } = err;
-  if (!status) status = 500;
-
+// eslint-disable-next-line no-unused-vars
+apiServer.use((err, req, res, next) => {
+  const { status = 500 } = err;
   res.status(status);
   res.send({
     status,

@@ -50,7 +50,7 @@ export function webpackClientDev() {
       hot: true,
       historyApiFallback: true,
       proxy: {
-        '**': `http://localhost:${config.port + 1}/`,
+        '**': `http://localhost:${parseInt(config.port, 10) + 1}/`,
       },
       disableHostCheck: true,
       staticOptions: {},
