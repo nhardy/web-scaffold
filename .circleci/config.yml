@@ -54,7 +54,7 @@ jobs:
       - run: mkdir -p $CIRCLE_ARTIFACTS/coverage
       - run:
           name: Running tests and collecting code coverage results
-          command: ./node_modules/.bin/nyc --report-dir $CIRCLE_ARTIFACTS/coverage --reporter lcov --reporter text npm test -- --reporter mocha-junit-reporter
+          command: ./node_modules/.bin/nyc --report-dir $CIRCLE_ARTIFACTS/coverage --reporter lcov --reporter text npm test:unit -- --reporter mocha-junit-reporter
           environment:
             NODE_ENV: test
             MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
