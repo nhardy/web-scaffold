@@ -9,6 +9,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
 import pq from 'proxyquire';
 import hook from 'node-hook';
+// $FlowFixMe
 import Module from 'module';
 
 import './setupJsDom';

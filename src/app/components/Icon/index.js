@@ -6,6 +6,7 @@ import cx from 'classnames';
 import styles from './styles.styl';
 
 
+// eslint-disable-next-line react/require-default-props
 const Icon = ({ name, className, image = false, ...props }: { name: string, className?: string, image?: boolean }) => {
   let Svg;
   try {
