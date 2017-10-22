@@ -113,7 +113,7 @@ jobs:
             - v1-build-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Running local acceptance tests
-          command: npm run test:acceptance -- -- reporter mocha-junit-reporter
+          command: npm run test:acceptance -- --reporter mocha-junit-reporter
           environment:
             MOCHA_FILE: local-acceptance-test-results.xml
       - store_artifacts:
@@ -129,6 +129,9 @@ jobs:
       - restore_cache:
           keys:
             - v1-npm-deps-{{ arch }}-{{ checksum "package.json" }}
+      - restore_cache:
+          keys:
+            - v1-build-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Deploying to Azure App Service
           command: npm run deploy
