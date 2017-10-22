@@ -1,7 +1,6 @@
 JOB_DEFAULTS: &JOB_DEFAULTS
   docker:
     - image: node:8
-  working_directory: ~/build
 
 version: 2
 jobs:
@@ -12,7 +11,7 @@ jobs:
       - save_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ~/build
+            - .
 
   dependencies:
     <<: *JOB_DEFAULTS
@@ -69,7 +68,6 @@ jobs:
       - restore_cache:
           keys:
             - v1-npm-deps-{{ arch }}-{{ checksum "package.json" }}
-      - run: mkdir -p $CIRCLE_ARTIFACTS/coverage
       - run:
           name: Running tests and collecting code coverage results
           command: ./node_modules/.bin/nyc --reporter lcov --reporter text npm run test:unit -- --reporter mocha-junit-reporter
