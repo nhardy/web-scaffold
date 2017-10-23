@@ -135,6 +135,16 @@ jobs:
       - run:
           name: Deploying to Azure App Service
           command: npm run deploy
+
+  healthcheck:
+    <<: *JOB_DEFAULTS
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - v1-npm-deps-{{ arch }}-{{ checksum "package.json" }}
       - run:
           name: Waiting for the server to be healthy
           command: |
@@ -182,6 +192,12 @@ workflows:
             - flow
             - coverage
             - acceptance
+          filters:
+            branches:
+              only: master
+      - healthcheck:
+          requires:
+            - deploy
           filters:
             branches:
               only: master
