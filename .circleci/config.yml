@@ -155,9 +155,12 @@ jobs:
             done
       - run:
           name: Running Acceptance Tests (post-deploy)
-          command: echo $ACCEPTANCE_TEST_HOST && npm run test:acceptance -- --reporter mocha-junit-reporter
+          command: |
+            ACCEPTANCE_TEST_HOST=$PUBLIC_URL
+            export ACCEPTANCE_TEST_HOST
+            npm run test:acceptance -- --reporter mocha-junit-reporter
+            unset -v ACCEPTANCE_TEST_HOST
           environment:
-            ACCEPTANCE_TEST_HOST: $PUBLIC_URL
             MOCHA_FILE: acceptance-test-results.xml
       - store_artifacts:
           path: acceptance-test-results.xml
