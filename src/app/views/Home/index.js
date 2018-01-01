@@ -34,29 +34,29 @@ const HomeView = () => (
     <h1>Home</h1>
     <img className={styles.profile} src={profileImg} srcSet={`${profileImg2x} 2x, ${profileImg3x} 3x`} alt="Profile" />
     <P className={styles.paragraph}>
-      I&apos;m a
+      I&apos;m a graduate of the
       {' '}
       <a
         href="https://www.uts.edu.au/future-students/information-technology/about-information-technology/bit-co-operative-scholarship"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Bachelor of Information Technology
+        Bachelor of Information Technology Co-operative Scholarship Program
       </a>
       {' '}
-      student at the
+      at the
       {' '}
       <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">University of Technology, Sydney</a>
       {' '}
       with a passion for IT and computer science.
       {' '}
-      I am currently studying overseas in Dunedin, New Zealand at the
+      I also studied overseas in Dunedin, New Zealand at the
       {' '}
       <a href="http://www.otago.ac.nz/" target="_blank" rel="noopener noreferrer">University of Otago</a>
       {' '}
-      and will complete my studies in November of 2017.
+      for my final semester.
       {' '}
-      I am soon to graduate and interested in work opportunities in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
+      I am currently interested in work opportunities located in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
     </P>
     <P className={styles.paragraph}>
       I have previously interned at
@@ -107,7 +107,7 @@ const HomeView = () => (
       {' '}
       <a href="https://github.com/css-modules/css-modules" target="_blank" rel="noopener noreferrer">CSS Modules</a>,
       {' '}
-      etc.
+      etc. and have continually built upon this skillset since.
       {' '}
       I am extremely passionate about this combination of technologies,
       {' '}

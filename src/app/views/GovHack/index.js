@@ -29,7 +29,7 @@ const GovHackView = () => (
       <meta name="twitter:description" content={DESCRIPTION} />
     </Helmet>
     <h1><a href="https://www.govhack.org/" target="_blank" rel="noopener noreferrer">GovHack</a></h1>
-    <h2><a href="https://www.twitter.com/GovHackNZ" target="_blank" rel="noopener noreferrer">GovHackNZ</a> 2017</h2>
+    <h2 id="govhack2017"><a href="https://www.twitter.com/GovHackNZ" target="_blank" rel="noopener noreferrer">GovHackNZ</a> 2017</h2>
     <P className={styles.paragraph}>
       As part of my time abroad in New Zealand, I participated in
       {' '}
@@ -69,7 +69,7 @@ const GovHackView = () => (
       <a href="https://youtu.be/fhVv2PB7Hg4" target="_blank" rel="noopener noreferrer">video pitch</a> that we submitted below.
     </P>
     <YouTube className={styles.player} videoId="fhVv2PB7Hg4" />
-    <h2><a href="https://www.twitter.com/GovHackSydney" target="_blank" rel="noopener noreferrer">GovHackSydney</a> 2016</h2>
+    <h2 id="govhack2016"><a href="https://www.twitter.com/GovHackSydney" target="_blank" rel="noopener noreferrer">GovHackSydney</a> 2016</h2>
     <P className={styles.paragraph}>
       For GovHack 2016, our team, <em>{'//'}no&nbsp;comment</em> built a social network, entitled &quot;Tagger&quot;.
       {' '}

@@ -59,29 +59,29 @@ export default class CurriculumVitae extends Component {
               </ul>
             </nav>
             <P className={styles.paragraph}>
-              I&apos;m a
+              I&apos;m a graduate of the
               {' '}
               <a
                 href="https://www.uts.edu.au/future-students/information-technology/about-information-technology/bit-co-operative-scholarship"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Bachelor of Information Technology
+                Bachelor of Information Technology Co-operative Scholarship Program
               </a>
               {' '}
-              student at the
+              at the
               {' '}
               <a href="https://www.uts.edu.au/" target="_blank" rel="noopener noreferrer">University of Technology, Sydney</a>
               {' '}
               with a passion for IT and computer science.
               {' '}
-              I am currently studying overseas in Dunedin, New Zealand at the
+              I also studied overseas in Dunedin, New Zealand at the
               {' '}
               <a href="http://www.otago.ac.nz/" target="_blank" rel="noopener noreferrer">University of Otago</a>
               {' '}
-              and will complete my studies in November of 2017.
+              for my final semester.
               {' '}
-              I am soon to graduate and interested in work opportunities in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
+              I am currently interested in work opportunities located in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
             </P>
             <P className={styles.paragraph}>
               I have previously interned at
@@ -199,19 +199,17 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.institution}>
               <h4 className={styles.course}>
-                Bachelor of Information Technology (BIT) Co-operative Scholarship program
+                Bachelor of Information Technology (BIT) Co-operative Scholarship Program
                 {' '}
                 at University of Technology, Sydney
               </h4>
               <h5 className={styles.dates}>2015 - 2017</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
-                I am a Bachelor of Information Technology student with the
+                I am a graduate of the Bachelor of Information Technology Co-operative Scholarship Program with the
                 {' '}
                 <abbr title="University of Technology, Sydney">UTS</abbr>,
                 {' '}
-                expecting completion in November 2017 at the conclusion of my study abroad period.
-                {' '}
-                The Bachelor of Information Technology Co-operative Scholarship program involved two 6-month industry placements.
+                which involved two 6-month industry placements.
               </P>
             </div>
             <div className={styles.institution}>
@@ -241,6 +239,48 @@ export default class CurriculumVitae extends Component {
           </section>
           <section>
             <h3 className={styles.category}>Other</h3>
+            <div className={styles.achievement}>
+              <h4 className={styles.challenge}>GovHackNZ</h4>
+              <h5 className={styles.dates}>2017</h5>
+              <P className={cx(styles.paragraph, styles.outline)}>
+                In July 2017, whilst in Dunedin, I participated in GovHackNZ,
+                {' '}
+                forming a team with 3 individuals whom I met at the event.
+                {' '}
+                Together, we produced a visual essay website,
+                {' '}
+                <a href="https://github.com/nhardy/south-of-45" target="_blank" rel="noopener noreferrer">South Of 45</a>
+                {' '}
+                aggregating different open government data sources to derive meaningful insights for the local council.
+                {' '}
+                Our submission won two cash prizes totalling NZ$1500.
+                {' '}
+                To find out more, read the
+                {' '}
+                <Link to="/govhack#govhack2017">details on the GovHack page</Link>.
+              </P>
+            </div>
+            <div className={styles.achievement}>
+              <h4 className={styles.challenge}>GovHack Sydney</h4>
+              <h5 className={styles.dates}>2016</h5>
+              <P className={cx(styles.paragraph, styles.outline)}>
+                In July 2016, immediately after a work hackathon,
+                {' '}
+                I worked over the weekend with 3 University classmates to produce a location-based social network,
+                {' '}
+                <a href="https://github.com/nhardy/tagger" target="_blank" rel="noopener noreferrer">Tagger</a>
+                {' '}
+                which made use of the Government
+                {' '}
+                <abbr title="Point Of Interest">POI</abbr>
+                {' '}
+                database for GovHack Sydney.
+                {' '}
+                To find out more, read the
+                {' '}
+                <Link to="/govhack#govhack2016">details on the GovHack page</Link>.
+              </P>
+            </div>
             <div className={styles.achievement}>
               <h4 className={styles.challenge}>NCSS Summer School</h4>
               <h5 className={styles.dates}>2014 - 2015</h5>

@@ -92,7 +92,7 @@ export default class SpecialLayout extends Component {
         <Parallax className={styles.parallax} src={hero} alt="Flower Macro">
           <span className={styles.greeting}>Hi, I&apos;m Nathan&nbsp;Hardy</span>
           <span className={styles.credit}>
-            Photography by <a href="https://facebook.com/IsobelleDwyerArtwork" target="_blank" rel="noopener noreferrer">Isobelle Dwyer</a>
+            Photograph by <a href="https://facebook.com/IsobelleDwyerArtwork" target="_blank" rel="noopener noreferrer">Isobelle Dwyer</a>
           </span>
         </Parallax>
         <main className={cx(styles.main, this.props.className)}>
