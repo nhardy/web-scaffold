@@ -11,7 +11,8 @@ import { checkStatus } from 'app/lib/fetch';
 
 type FetchAction = {
   types: [string, string, string],
-  endpoint: {
+  // eslint-disable-next-line no-undef
+  endpoint: RequestOptions & {
     url: string,
     query?: {},
   },

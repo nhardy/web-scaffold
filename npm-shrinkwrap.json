@@ -3885,6 +3885,16 @@
         "eslint-restricted-globals": "0.1.1"
       }
     },
+    "eslint-config-nhardy": {
+      "version": "0.3.4",
+      "resolved": "https://registry.npmjs.org/eslint-config-nhardy/-/eslint-config-nhardy-0.3.4.tgz",
+      "integrity": "sha512-9fc9IB8HPbxOrMde5neg5dszFG1KIpyczCrZ4xPaNDzR08TjB7p74q4IHsB5Gf6wnZHLmO9yH274oATl1QK/3w==",
+      "dev": true,
+      "requires": {
+        "babel-eslint": "8.2.1",
+        "eslint-config-airbnb": "16.1.0"
+      }
+    },
     "eslint-import-resolver-node": {
       "version": "0.3.1",
       "resolved": "https://registry.npmjs.org/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.1.tgz",
