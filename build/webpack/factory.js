@@ -360,6 +360,8 @@ export default function webpackFactory({ production = false, client = false, wri
       client && new WriteManifestPlugin({ client, callback: writeManifestCallback }),
     ].filter(identity),
 
+    bail: process.env.CI,
+
     resolve: {
       extensions: ['.json', '.js', '.styl'],
       modules: [
