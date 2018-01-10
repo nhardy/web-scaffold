@@ -37,7 +37,7 @@ export default class Spacer extends PureComponent<Props, State> {
   }
 
   updateMaxDimension = () => {
-    this.setState({ maxDimension: Math.max(screen.width, screen.height) });
+    this.setState({ maxDimension: Math.max(window.screen.width, window.screen.height) });
   };
 
   updateMaxDimensionDebounced = debounce(this.updateMaxDimension, 250);

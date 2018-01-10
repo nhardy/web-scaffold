@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import nodemon from 'nodemon';
 import webpack from 'webpack';
 import httpolyglot from 'httpolyglot';
@@ -80,9 +82,7 @@ export function webpackServerDev() {
   return new Promise((resolve) => {
     let running = false;
 
-    const compiler = webpack(
-      webpackFactory({ production: false, client: false }),
-    );
+    const compiler = webpack(webpackFactory({ production: false, client: false }));
 
     compiler.watch({
       aggregateTimeout: 300,

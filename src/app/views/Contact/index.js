@@ -132,7 +132,7 @@ export default class ContactView extends Component {
           <div>
             <h1>Thanks for your message!</h1>
             <P className={styles.paragraph}>I&apos;ll be in touch soon.</P>
-            <P className={styles.paragraph}>Send <a href="" onClick={this.reset}>another</a>?</P>
+            <P className={styles.paragraph}>Send <a href="/contact" onClick={this.reset}>another</a>?</P>
           </div>
         )}
 

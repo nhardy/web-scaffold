@@ -33,7 +33,7 @@ export default class WriteManifestPlugin {
   }
 
   writeFilesManifest(webpackData) {
-    const publicPath = this.compiler.options.output.publicPath;
+    const { publicPath } = this.compiler.options.output;
     const content = {
       publicPath,
       ...getAssetsByChunk(webpackData, publicPath),

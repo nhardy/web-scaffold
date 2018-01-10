@@ -45,7 +45,14 @@ export default class TextField extends Component {
     this._node.checkValidity();
 
   render() {
-    const { name, id, pattern, required, placeholder, field: { valid, invalid } } = this.props;
+    const {
+      name,
+      id,
+      pattern,
+      required,
+      placeholder,
+      field: { valid, invalid },
+    } = this.props;
 
     return (
       <input

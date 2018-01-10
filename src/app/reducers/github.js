@@ -1,4 +1,4 @@
-import { get } from 'lodash-es';
+import { get, pick } from 'lodash-es';
 
 import config from 'app/config';
 import {
@@ -9,8 +9,8 @@ import {
 
 // Note: this is being included to reduce the amount of data stored
 // This should probably be moved out of here
-function repoTransformer({ id, name, fork, pushed_at, html_url, description, language, stargazers_count, owner }) {
-  return { id, name, fork, pushed_at, html_url, description, language, stargazers_count, owner };
+function repoTransformer(repo) {
+  return pick(repo, ['id', 'name', 'fork', 'pushed_at', 'html_url', 'description', 'language', 'stargazers_count', 'owner']);
 }
 
 const initialState = {

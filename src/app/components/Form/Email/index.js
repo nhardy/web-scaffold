@@ -11,7 +11,7 @@ export default class EmailField extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string,
-    required: PropTypes.bool.isRequired,
+    required: PropTypes.bool,
     placeholder: PropTypes.string,
     field: fieldShape, // eslint-disable-line react/require-default-props
   };
@@ -43,7 +43,13 @@ export default class EmailField extends Component {
     this._node.checkValidity();
 
   render() {
-    const { name, id, required, placeholder, field: { valid, invalid } } = this.props;
+    const {
+      name,
+      id,
+      required,
+      placeholder,
+      field: { valid, invalid },
+    } = this.props;
 
     return (
       <input

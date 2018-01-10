@@ -20,7 +20,7 @@ if (process.env.HTTPS_ORIGIN) {
   server = http.createServer(app);
 }
 
-let port = config.port;
+let { port } = config;
 if (__DEVELOPMENT__) port = parseInt(config.port, 10) + 1;
 
 server.listen(port);
