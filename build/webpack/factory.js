@@ -132,6 +132,14 @@ const svgoCleanupIdsPlugin = resource => ({
   },
 });
 
+const urlLoader = {
+  loader: 'url-loader',
+  options: {
+    limit: 5120,
+    name: '[name]-[hash:6].[ext]',
+  },
+};
+
 export default function webpackFactory({ production = false, client = false, writeManifestCallback = noop }) {
   return {
     stats: {
@@ -239,25 +247,13 @@ export default function webpackFactory({ production = false, client = false, wri
         {
           test: /\.(?:jpe?g|png|woff2?|eot|ttf)(?:\?.*$|$)/,
           use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 5120,
-                name: '[name]-[hash:6].[ext]',
-              },
-            },
+            urlLoader,
           ],
         },
         {
           test: /^[^.]+(?!\.icon)\.svg$/,
           use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 5120,
-                name: '[name]-[hash:6].[ext]',
-              },
-            },
+            urlLoader,
             ({ resource }) => ({
               loader: 'svgo-loader',
               options: {

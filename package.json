@@ -112,6 +112,7 @@
     "style-loader": "^0.19.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "svgo": "^1.0.3",
     "svgo-loader": "^2.1.0",
     "text-loader": "^0.0.1",
     "thread-loader": "^1.1.2",
