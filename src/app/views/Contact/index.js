@@ -101,7 +101,7 @@ export default class ContactView extends Component {
           <form className={formStyles.form}>
             <h1>Contact Me</h1>
             <P className={styles.paragraph}>
-              If you&apos;re a business or recruiter, this is a great way to get in contact with me about work opportunities.
+              Leave me a message and I&apos;ll endeavour to get back to you as soon as I can.
             </P>
             <label className={formStyles.label} htmlFor="contact-name">Name</label>
             <Text name="name" id="contact-name" pattern=".{2,100}" required placeholder="e.g. John Smith" autofocus />

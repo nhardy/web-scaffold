@@ -81,7 +81,11 @@ export default class CurriculumVitae extends Component {
               {' '}
               for my final semester.
               {' '}
-              I am currently interested in work opportunities located in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
+              I am currently working at
+              {' '}
+              <a href="https://www.kablamo.com.au/" target="_blank" rel="noopener noreferrer">Kablamo</a>
+              {' '}
+              as a Full Stack Engineer.
             </P>
             <P className={styles.paragraph}>
               I have previously interned at
@@ -112,8 +116,27 @@ export default class CurriculumVitae extends Component {
           <section>
             <h3 className={styles.category}>Work History</h3>
             <div className={styles.workplace}>
+              <h4 className={styles.position}>Full Stack Engineer at Kablamo</h4>
+              <h5 className={styles.dates}>March 2018 &mdash; present</h5>
+              <P className={cx(styles.paragraph, styles.duties)}>
+                I am currently working full time at
+                {' '}
+                <a href="https://www.kablamo.com.au/" target="_blank" rel="noopener noreferrer">Kablamo</a>
+                {' '}
+                as a Full Stack Engineer.
+                {' '}
+                At the time of writing, I am contracted to
+                {' '}
+                <a href="https://www.switch.tv/" target="_blank" rel="noopener noreferrer">Switch Media</a>
+                {' '}
+                working on
+                {' '}
+                <a href="http://freeviewnz.tv/" target="_blank" rel="noopener noreferrer">Freeview New Zealand</a>.
+              </P>
+            </div>
+            <div className={styles.workplace}>
               <h4 className={styles.position}>Intern at Appliances Online</h4>
-              <h5 className={styles.dates}>January 2017 ‐ July 2017</h5>
+              <h5 className={styles.dates}>January 2017 &mdash; July 2017</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 As part of my university degree, my third year placement was at Appliances Online.
                 {' '}
@@ -124,7 +147,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.workplace}>
               <h4 className={styles.position}>Developer at Mi9/Nine Digital</h4>
-              <h5 className={styles.dates}>December 2015 ‐ December 2016</h5>
+              <h5 className={styles.dates}>December 2015 &mdash; December 2016</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 Upon completion of my internship, I was offered to continue with Mi9 (now Nine Digital)
                 {' '}
@@ -138,7 +161,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.workplace}>
               <h4 className={styles.position}>Intern at Mi9</h4>
-              <h5 className={styles.dates}>July 2015 ‐ December 2015</h5>
+              <h5 className={styles.dates}>July 2015 &mdash; December 2015</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 As part of my university degree, I was required to complete two 6 month industry placements.
                 {' '}
@@ -155,7 +178,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.workplace}>
               <h4 className={styles.position}>Recovery Presentation Associate at Big W Macquarie Centre</h4>
-              <h5 className={styles.dates}>April 2015 ‐ September 2015</h5>
+              <h5 className={styles.dates}>April 2015 &mdash; September 2015</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 My role in the Macquarie Centre store consisted of store recovery and presentation duties.
                 {' '}
@@ -164,7 +187,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.workplace}>
               <h4 className={styles.position}>Recovery Presentation Associate at Big W Ballina</h4>
-              <h5 className={styles.dates}>December 2012 ‐ December 2014</h5>
+              <h5 className={styles.dates}>December 2012 &mdash; December 2014</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 My position involved a variety of tasks including nightfill, service duties, customer service,
                 {' '}
@@ -177,7 +200,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.workplace}>
               <h4 className={styles.position}>Big W Retail Traineeship</h4>
-              <h5 className={styles.dates}>September 2012 ‐ December 2012</h5>
+              <h5 className={styles.dates}>September 2012 &mdash; December 2012</h5>
               <P className={cx(styles.paragraph, styles.duties)}>
                 I participated in a work experience program with Big W whilst at school which entailed one day per week (9 to 5) for six weeks.
                 {' '}
@@ -189,7 +212,7 @@ export default class CurriculumVitae extends Component {
             <h3 className={styles.category}>Education</h3>
             <div className={styles.institution}>
               <h4 className={styles.course}>Study Abroad at University of Otago, Dunedin, New Zealand</h4>
-              <h5 className={styles.dates}>July 2017 - November 2017</h5>
+              <h5 className={styles.dates}>July 2017 &mdash; November 2017</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
                 For my final semester, I studied abroad at the
                 {' '}
@@ -203,7 +226,7 @@ export default class CurriculumVitae extends Component {
                 {' '}
                 at University of Technology, Sydney
               </h4>
-              <h5 className={styles.dates}>2015 - 2017</h5>
+              <h5 className={styles.dates}>2015 &mdash; 2017</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
                 I am a graduate of the Bachelor of Information Technology Co-operative Scholarship Program with the
                 {' '}
@@ -283,7 +306,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.achievement}>
               <h4 className={styles.challenge}>NCSS Summer School</h4>
-              <h5 className={styles.dates}>2014 - 2015</h5>
+              <h5 className={styles.dates}>2014 &mdash; 2015</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
                 In January of 2014, I participated in the NCSS Summer School in the Python/web stream.
                 {' '}
@@ -299,7 +322,7 @@ export default class CurriculumVitae extends Component {
             </div>
             <div className={styles.achievement}>
               <h4 className={styles.challenge}>NCSS Python Challenge</h4>
-              <h5 className={styles.dates}>2012 - 2014</h5>
+              <h5 className={styles.dates}>2012 &mdash; 2014</h5>
               <P className={cx(styles.paragraph, styles.outline)}>
                 I participated in the National Computer Science School Python Challenge during high school.
                 {' '}

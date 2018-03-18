@@ -56,7 +56,11 @@ const HomeView = () => (
       {' '}
       for my final semester.
       {' '}
-      I am currently interested in work opportunities located in both Australia (mainly Sydney) and New Zealand (mainly Dunedin).
+      I am currently working at
+      {' '}
+      <a href="https://www.kablamo.com.au/" target="_blank" rel="noopener noreferrer">Kablamo</a>
+      {' '}
+      as a Full Stack Engineer.
     </P>
     <P className={styles.paragraph}>
       I have previously interned at
@@ -87,6 +91,7 @@ const HomeView = () => (
       I am proficient in the use of the git version control system and have used this in a variety of personal and professional projects.
       {' '}
       Often in an academic environment, I have found myself
+      {' '}
       <a href="https://gist.github.com/nhardy/05617237c1d3208213bd21749b735277" target="_blank" rel="noopener noreferrer">assisting others</a>
       {' '}
       with this occasionally extending into the workplace as well.
