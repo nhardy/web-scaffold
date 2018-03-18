@@ -36,15 +36,13 @@ const postcssOptions = {
   },
 };
 
-const styleLoader = ({ production }) => {
-  return production
-    ? {
-      loader: MiniCssExtractPlugin.loader,
-    } : {
-      loader: 'style-loader',
-      options: { singleton: true },
-    };
-};
+const styleLoader = ({ production }) => (production
+  ? {
+    loader: MiniCssExtractPlugin.loader,
+  } : {
+    loader: 'style-loader',
+    options: { singleton: true },
+  });
 
 const stylusLoaders = ({ production, client }) => {
   const options = {

@@ -71,7 +71,7 @@ jobs:
       - run:
           name: Running tests and collecting code coverage results
           # command: ./node_modules/.bin/nyc --reporter lcov --reporter text npm run test:unit -- --reporter mocha-junit-reporter
-          command: npm test
+          command: npm run test:unit
           environment:
             # NODE_ENV: test
             MOCHA_FILE: unit-test-results.xml
