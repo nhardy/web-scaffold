@@ -1,4 +1,4 @@
-export default {
+const config = {
   port: process.env.PORT || '8000',
   publicUrl: process.env.PUBLIC_URL,
   siteName: 'nhardy.id.au',
@@ -19,3 +19,4 @@ export default {
     handle: '@nhardy96',
   },
 };
+export default config;

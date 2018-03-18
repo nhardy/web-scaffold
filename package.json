@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "cover": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test -- --reporter min",
-    "lint": "eslint ./src ./test ./build",
-    "lint:fix": "eslint --fix ./src ./test ./build",
+    "lint": "eslint ./src ./test ./build ./config ./server.js",
+    "lint:fix": "eslint --fix ./src ./test ./build ./config./server.js",
     "flow": "flow",
     "flowtypes": "flow-typed install --overwrite",
     "dev": "node ./build/index.js dev",
