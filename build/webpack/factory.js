@@ -1,4 +1,3 @@
-import fs from 'fs';
 import path from 'path';
 import { identity, noop } from 'lodash-es';
 import hash from 'string-hash';
@@ -18,20 +17,17 @@ import {
 
 import config from '../../config';
 import packageJson from '../../package.json';
+import babelrc from '../../config/babelrc';
 import WriteManifestPlugin from './plugins/WriteManifestPlugin';
 
 
-const babelrc = (() => {
-  const raw = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', '.babelrc')));
-  return {
-    ...raw,
+const babelLoader = {
+  loader: 'babel-loader',
+  options: {
     babelrc: false,
-    presets: [
-      ['es2015', { modules: false }],
-      ...raw.presets.filter(name => !name.includes('es2015')),
-    ],
-  };
-})();
+    ...babelrc(),
+  },
+};
 
 const postcssOptions = {
   ident: 'postcss',
@@ -207,10 +203,7 @@ export default function webpackFactory({ production = false, client = false, wri
             !production && {
               loader: 'react-hot-loader/webpack',
             },
-            {
-              loader: 'babel-loader',
-              options: babelrc,
-            },
+            babelLoader,
           ].filter(identity),
         },
         {
@@ -219,13 +212,7 @@ export default function webpackFactory({ production = false, client = false, wri
             path.join(__dirname, '..', '..', 'node_modules', 'lodash-es'),
           ],
           use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                babelrc: false,
-                presets: [['es2015', { modules: false }]],
-              },
-            },
+            babelLoader,
           ],
         },
         {
@@ -270,10 +257,7 @@ export default function webpackFactory({ production = false, client = false, wri
         {
           test: /\.icon\.svg$/,
           use: [
-            {
-              loader: 'babel-loader',
-              options: babelrc,
-            },
+            babelLoader,
             ({ resource }) => ({
               loader: 'react-svg-loader',
               options: {

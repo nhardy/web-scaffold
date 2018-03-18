@@ -70,16 +70,17 @@ jobs:
             - v1-npm-deps-{{ arch }}-{{ checksum "package.json" }}
       - run:
           name: Running tests and collecting code coverage results
-          command: ./node_modules/.bin/nyc --reporter lcov --reporter text npm run test:unit -- --reporter mocha-junit-reporter
+          # command: ./node_modules/.bin/nyc --reporter lcov --reporter text npm run test:unit -- --reporter mocha-junit-reporter
+          command: npm test
           environment:
-            NODE_ENV: test
+            # NODE_ENV: test
             MOCHA_FILE: unit-test-results.xml
       - store_artifacts:
          path: unit-test-results.xml
          prefix: unit-tests
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+      # - store_artifacts:
+      #     path: coverage
+      #     prefix: coverage
 
   build:
     <<: *JOB_DEFAULTS
