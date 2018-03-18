@@ -16,7 +16,7 @@ Development on Mac/Linux is advised as some dependencies are difficult to work w
 
 Make sure you have [Node Version Manager](https://github.com/creationix/nvm) (nvm) installed.
 
-Run `nvm install 7` to install the latest version of Nodejs. You may want to also set this as your default Node.js version with `nvm alias default 7`.
+Run `nvm install 9` to install the latest version of Nodejs. You may want to also set this as your default Node.js version with `nvm alias default 9`.
 
 ### Windows
 
