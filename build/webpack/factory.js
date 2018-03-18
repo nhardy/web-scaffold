@@ -2,16 +2,13 @@ import path from 'path';
 import { identity, noop } from 'lodash-es';
 import hash from 'string-hash';
 import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import nodeExternals from 'webpack-node-externals';
 import {
   BannerPlugin,
   DefinePlugin,
   HotModuleReplacementPlugin,
   LoaderOptionsPlugin,
-  NamedModulesPlugin,
-  NoEmitOnErrorsPlugin,
-  optimize,
   ProvidePlugin,
 } from 'webpack';
 
@@ -39,6 +36,16 @@ const postcssOptions = {
   },
 };
 
+const styleLoader = ({ production }) => {
+  return production
+    ? {
+      loader: MiniCssExtractPlugin.loader,
+    } : {
+      loader: 'style-loader',
+      options: { singleton: true },
+    };
+};
+
 const stylusLoaders = ({ production, client }) => {
   const options = {
     importLoaders: 2,
@@ -46,38 +53,20 @@ const stylusLoaders = ({ production, client }) => {
     localIdentName: production ? '[hash:base64:8]' : '[path][name]--[local]--[hash:base64:5]',
   };
   if (client) {
-    return production
-      ? ExtractTextPlugin.extract({
-        use: [
-          {
-            loader: 'css-loader',
-            options,
-          },
-          {
-            loader: 'postcss-loader',
-            options: postcssOptions,
-          },
-          {
-            loader: 'stylus-loader',
-          },
-        ],
-      }) : [
-        {
-          loader: 'style-loader',
-          options: { singleton: true },
-        },
-        {
-          loader: 'css-loader',
-          options,
-        },
-        {
-          loader: 'postcss-loader',
-          options: postcssOptions,
-        },
-        {
-          loader: 'stylus-loader',
-        },
-      ];
+    return [
+      styleLoader({ production }),
+      {
+        loader: 'css-loader',
+        options,
+      },
+      {
+        loader: 'postcss-loader',
+        options: postcssOptions,
+      },
+      {
+        loader: 'stylus-loader',
+      },
+    ];
   }
   return [
     {
@@ -96,18 +85,12 @@ const stylusLoaders = ({ production, client }) => {
 
 const cssLoaders = ({ production, client }) => {
   if (client) {
-    return production
-      ? ExtractTextPlugin.extract({
-        use: 'css-loader',
-      }) : [
-        {
-          loader: 'style-loader',
-          options: { singleton: true },
-        },
-        {
-          loader: 'css-loader',
-        },
-      ];
+    return [
+      styleLoader({ production }),
+      {
+        loader: 'css-loader',
+      },
+    ];
   }
   return [
     {
@@ -138,6 +121,8 @@ const urlLoader = {
 
 export default function webpackFactory({ production = false, client = false, writeManifestCallback = noop }) {
   return {
+    mode: production ? 'production' : 'development',
+
     stats: {
       children: false,
     },
@@ -146,12 +131,13 @@ export default function webpackFactory({ production = false, client = false, wri
       head: [
         path.resolve(__dirname, '..', '..', 'src', 'client', 'head.js'),
       ],
-      vendor: [
-        'babel-polyfill',
-        path.resolve(__dirname, '..', '..', 'src', 'app', 'shims', 'index.js'),
-        'react',
-      ],
+      // vendor: [
+      //   '@babel/polyfill',
+      //   path.resolve(__dirname, '..', '..', 'src', 'app', 'shims', 'index.js'),
+      // ],
       bundle: [
+        '@babel/polyfill',
+        path.resolve(__dirname, '..', '..', 'src', 'app', 'shims', 'index.js'),
         !production && 'webpack-dev-server/client?/',
         !production && 'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
@@ -159,7 +145,7 @@ export default function webpackFactory({ production = false, client = false, wri
       ].filter(identity),
     } : {
       server: [
-        'babel-polyfill',
+        '@babel/polyfill',
         path.resolve(__dirname, '..', '..', 'src', 'server', 'index.js'),
       ],
     },
@@ -292,12 +278,20 @@ export default function webpackFactory({ production = false, client = false, wri
       ],
     },
 
+    optimization: {
+      noEmitOnErrors: true,
+      concatenateModules: true,
+      nodeEnv: production ? 'production' : 'development',
+      minimize: client && production,
+      runtimeChunk: client ? 'single' : false,
+      splitChunks: client ? { chunks: 'all' } : false,
+    },
+
     plugins: [
       new DefinePlugin({
         __CLIENT__: client,
         __DEVELOPMENT__: !production,
         __SERVER__: !client,
-        'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
         'process.env.PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL || `http://localhost:${config.port}`),
         'process.env.RECAPTCHA_SITEKEY': JSON.stringify(process.env.RECAPTCHA_SITEKEY),
         'process.env.ANALYTICS_TRACKING_ID': JSON.stringify(process.env.ANALYTICS_TRACKING_ID),
@@ -310,25 +304,9 @@ export default function webpackFactory({ production = false, client = false, wri
       new ProvidePlugin({
         fetch: 'isomorphic-fetch',
       }),
-      new NoEmitOnErrorsPlugin(),
-      new optimize.ModuleConcatenationPlugin(),
       !production && new HotModuleReplacementPlugin(),
-      !production && new NamedModulesPlugin(),
-      client && new optimize.CommonsChunkPlugin({
-        name: 'runtime',
-        chunks: ['vendor'],
-        minChunks: Infinity,
-      }),
-      client && new optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        chunks: ['bundle'],
-        minChunks(module) {
-          return module.context && module.context.includes('node_modules');
-        },
-      }),
-      client && production && new ExtractTextPlugin({
-        filename: '[name]-[contenthash:6].css',
-        allChunks: true,
+      client && production && new MiniCssExtractPlugin({
+        filename: '[name]-[chunkhash:6].css',
       }),
       !client && !production && new BannerPlugin({
         banner: 'require("source-map-support").install();',
@@ -337,9 +315,6 @@ export default function webpackFactory({ production = false, client = false, wri
       }),
       production && new LoaderOptionsPlugin({
         minimize: true,
-      }),
-      client && production && new optimize.UglifyJsPlugin({
-        sourceMap: true,
       }),
       client && new WriteManifestPlugin({ client, callback: writeManifestCallback }),
     ].filter(identity),

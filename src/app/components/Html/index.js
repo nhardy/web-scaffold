@@ -31,11 +31,20 @@ const Html = ({ assets, component, store }) => {
         {helmet.link.toComponent()}
         {helmet.base.toComponent()}
         {__DEVELOPMENT__ ? <script type="text/javascript" src="/webpack-dev-server.js" /> : null}
+        {assets.runtime.js.map(path => (
+          <script key={path} type="text/javascript" src={path} async defer />
+        ))}
+        {assets['vendors~head'].js.map(path => (
+          <script key={path} type="text/javascript" src={path} async defer />
+        ))}
         {assets.head.js.map(path => (
           <script key={path} type="text/javascript" src={path} async defer />
         ))}
         {helmet.script.toComponent()}
-        {assets.vendor.css && assets.vendor.css.map(path => (
+        {assets['vendors~head'].css && assets['vendors~head'].css.map(path => (
+          <link key={path} rel="stylesheet" type="text/css" href={path} />
+        ))}
+        {assets['vendors~bundle'].css && assets['vendors~bundle'].css.map(path => (
           <link key={path} rel="stylesheet" type="text/css" href={path} />
         ))}
         {assets.bundle.css && assets.bundle.css.map(path => (
@@ -49,14 +58,11 @@ const Html = ({ assets, component, store }) => {
             __html: `window.__data=${JSON.stringify(store.getState())};`,
           }}
         />
-        {assets.runtime.js.map(path => (
-          <script key={path} type="text/javascript" src={path} defer />
-        ))}
-        {assets.vendor.js.map(path => (
-          <script key={path} type="text/javascript" src={path} defer />
+        {assets['vendors~bundle'].js.map(path => (
+          <script key={path} type="text/javascript" src={path} async defer />
         ))}
         {assets.bundle.js.map(path => (
-          <script key={path} type="text/javascript" src={path} defer />
+          <script key={path} type="text/javascript" src={path} async defer />
         ))}
       </body>
     </html>

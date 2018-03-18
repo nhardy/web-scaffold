@@ -11,7 +11,7 @@ import Application from 'azur';
 export function zip(): Promise<void> {
   return new Promise((resolve, reject) => {
     const output = fs.createWriteStream(path.join(__dirname, '..', '.tmp', 'app.zip'));
-    const archive = new Archiver('zip', {
+    const archive = Archiver('zip', {
       zlib: { level: 9 },
     });
     output.on('close', () => resolve());

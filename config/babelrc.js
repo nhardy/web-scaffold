@@ -13,16 +13,13 @@ function babelrc(isBrowser = true) {
       '@babel/preset-flow',
     ],
     plugins: [
-      'transform-decorators-legacy',
       [
-        '@babel/transform-runtime',
+        '@babel/plugin-transform-runtime',
         {
-          helpers: true,
           polyfill: false,
-          regenerator: false,
-          moduleName: '@babel/runtime',
         },
       ],
+      'transform-decorators-legacy',
     ],
     env: {
       test: {
