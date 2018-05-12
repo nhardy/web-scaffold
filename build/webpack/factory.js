@@ -13,7 +13,7 @@ import {
 } from 'webpack';
 
 import config from '../../config';
-import packageJson from '../../package.json';
+import packageJson from '../../package';
 import babelrc from '../../config/babelrc';
 import WriteManifestPlugin from './plugins/WriteManifestPlugin';
 

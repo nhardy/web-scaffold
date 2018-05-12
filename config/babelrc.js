@@ -8,7 +8,12 @@ function babelrc(isBrowser = true) {
           targets: isBrowser ? { browsers: ['last 2 versions'] } : { node: 'current' },
         },
       ],
-      '@babel/preset-stage-0',
+      [
+        '@babel/preset-stage-0',
+        {
+          decoratorsLegacy: true,
+        },
+      ],
       '@babel/preset-react',
       '@babel/preset-flow',
     ],
@@ -19,7 +24,6 @@ function babelrc(isBrowser = true) {
           polyfill: false,
         },
       ],
-      'transform-decorators-legacy',
     ],
     env: {
       test: {
