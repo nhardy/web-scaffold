@@ -79,7 +79,15 @@ export default class ProjectsView extends Component {
           {' '}
           Channel 9&apos;s live streaming and video-on-demand platform, as well as the
           {' '}
-          <a href="https://www.appliancesonline.com.au" target="_blank" rel="noopener noreferrer">Appliances Online website</a>.
+          <a href="https://www.appliancesonline.com.au" target="_blank" rel="noopener noreferrer">Appliances Online website</a>,
+          {' '}
+          and the as-yet unreleased
+          {' '}
+          <a href="https://freeviewnz.tv/" target="_blank" rel="noopener noreferrer">Freeview New Zealand</a>
+          {' '}
+          <abbr title="Hybrid Broadband Broadcast Television">HbbTV</abbr>
+          {' '}
+          application.
         </P>
         <h2>GitHub</h2>
         <P className={styles.paragraph}>

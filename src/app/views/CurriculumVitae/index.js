@@ -129,9 +129,13 @@ export default class CurriculumVitae extends Component {
                 {' '}
                 <a href="https://www.switch.tv/" target="_blank" rel="noopener noreferrer">Switch Media</a>
                 {' '}
-                working on
+                working on the
                 {' '}
-                <a href="http://freeviewnz.tv/" target="_blank" rel="noopener noreferrer">Freeview New Zealand</a>.
+                <a href="http://freeviewnz.tv/" target="_blank" rel="noopener noreferrer">Freeview New Zealand</a>
+                {' '}
+                <abbr title="Hybrid Broadband Broadcast Television">HbbTV</abbr>
+                {' '}
+                application.
               </P>
             </div>
             <div className={styles.workplace}>
