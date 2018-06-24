@@ -25,13 +25,13 @@ export default class App extends Component {
     location: appPropTypes.location.isRequired,
   };
 
+  static childContextTypes = {
+    location: appPropTypes.location,
+  };
+
   static defaultProps = {
     routeError: undefined,
     children: undefined,
-  };
-
-  static childContextTypes = {
-    location: appPropTypes.location,
   };
 
   getChildContext() {

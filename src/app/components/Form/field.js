@@ -14,15 +14,15 @@ export const fieldShape = PropTypes.shape({
 
 export default function field() {
   return WrappedComponent => class Field extends Component {
-    static contextTypes = {
-      form: _formShape,
-    };
-
     static displayName = `Field(${getDisplayName(WrappedComponent)})`;
 
     static propTypes = {
       name: PropTypes.string.isRequired,
       withRef: PropTypes.func,
+    };
+
+    static contextTypes = {
+      form: _formShape,
     };
 
     static defaultProps = {
