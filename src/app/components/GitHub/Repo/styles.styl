@@ -49,13 +49,25 @@ $imgSize = 32px
   margin-right: 0.5em
   vertical-align: middle
 
-.stargazers
+.stat
   flex: 0 0 auto
   text-decoration: none
   transition: color 250ms ease-in-out
 
+  &:not(:last-child)
+    margin-right: 1em
+
   &:hover
     color: $themeColor
 
-.star
+.forks
+  composes: stat
+
+.stargazers
+  composes: stat
+
+.watchers
+  composes: stat
+
+.pictogram
   margin-right: 0.5em

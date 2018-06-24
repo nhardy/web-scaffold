@@ -81,13 +81,17 @@ export default class ProjectsView extends Component {
           {' '}
           <a href="https://www.appliancesonline.com.au" target="_blank" rel="noopener noreferrer">Appliances Online website</a>,
           {' '}
-          and the as-yet unreleased
+          the current
           {' '}
           <a href="https://freeviewnz.tv/" target="_blank" rel="noopener noreferrer">Freeview New Zealand</a>
           {' '}
           <abbr title="Hybrid Broadband Broadcast Television">HbbTV</abbr>
           {' '}
-          application.
+          application, and the
+          {' '}
+          <abbr title="Australian Broacasting Corporation">ABC</abbr>&apos;
+          {' '}
+          Apple News pipeline.
         </P>
         <h2>GitHub</h2>
         <P className={styles.paragraph}>

@@ -17,7 +17,7 @@ import styles from './styles.styl';
 const TITLE = 'Home';
 const DESCRIPTION = [
   'The website of web developer, Nathan Hardy.',
-  'I\'ve worked on world-class web applications and services used by millions of Australians.',
+  'I work on world-class web applications and services used by millions of Australians (and New Zealanders).',
 ].join(' ');
 
 const HomeView = () => (
@@ -60,7 +60,11 @@ const HomeView = () => (
       {' '}
       <a href="https://www.kablamo.com.au/" target="_blank" rel="noopener noreferrer">Kablamo</a>
       {' '}
-      as a Full Stack Engineer.
+      as a Full Stack Engineer contracted to the
+      {' '}
+      <abbr title="Australian Broadcasting Corporation">ABC</abbr>
+      {' '}
+      working on ABC&apos;s Apple News pipeline.
     </P>
     <P className={styles.paragraph}>
       I have previously interned at

@@ -10,7 +10,19 @@ import {
 // Note: this is being included to reduce the amount of data stored
 // This should probably be moved out of here
 function repoTransformer(repo) {
-  return pick(repo, ['id', 'name', 'fork', 'pushed_at', 'html_url', 'description', 'language', 'stargazers_count', 'owner']);
+  return pick(repo, [
+    'id',
+    'name',
+    'fork',
+    'pushed_at',
+    'html_url',
+    'description',
+    'language',
+    'forks_count',
+    'stargazers_count',
+    'watchers_count',
+    'owner',
+  ]);
 }
 
 const initialState = {

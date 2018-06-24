@@ -85,7 +85,13 @@ export default class CurriculumVitae extends Component {
               {' '}
               <a href="https://www.kablamo.com.au/" target="_blank" rel="noopener noreferrer">Kablamo</a>
               {' '}
-              as a Full Stack Engineer.
+              as a Full Stack Engineer
+              {' '}
+              as a Full Stack Engineer contracted to the
+              {' '}
+              <abbr title="Australian Broadcasting Corporation">ABC</abbr>
+              {' '}
+              working on ABC&apos;s Apple News pipeline.
             </P>
             <P className={styles.paragraph}>
               I have previously interned at
@@ -125,7 +131,13 @@ export default class CurriculumVitae extends Component {
                 {' '}
                 as a Full Stack Engineer.
                 {' '}
-                At the time of writing, I am contracted to
+                At the time of writing, I am contracted to the
+                {' '}
+                <abbr title="Australian Broadcasting Corporation">ABC</abbr>
+                {' '}
+                working on their Apple News pipeline.
+                {' '}
+                Before that, I was contracted to
                 {' '}
                 <a href="https://www.switch.tv/" target="_blank" rel="noopener noreferrer">Switch Media</a>
                 {' '}

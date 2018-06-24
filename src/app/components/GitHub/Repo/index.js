@@ -18,7 +18,9 @@ const GitHubRepo = ({ repo }) => {
     },
     description,
     language,
+    forks_count: forksCount,
     stargazers_count: stargazersCount,
+    watchers_count: watchersCount,
   } = repo;
 
   return (
@@ -37,8 +39,16 @@ const GitHubRepo = ({ repo }) => {
           <Icon className={styles.icon} name={language.toLowerCase()} image />
           <span>{language}</span>
         </div>
+        <a className={styles.watchers} href={`${url}/watchers`} target="_blank" rel="noopener noreferrer">
+          <FontAwesome className={cx(styles.pictogram, 'fa-eye')} />
+          <span>{watchersCount}</span>
+        </a>
+        <a className={styles.forks} href={`${url}/network`} target="_blank" rel="noopener noreferrer">
+          <FontAwesome className={cx(styles.pictogram, 'fa-code-fork')} />
+          <span>{forksCount}</span>
+        </a>
         <a className={styles.stargazers} href={`${url}/stargazers`} target="_blank" rel="noopener noreferrer">
-          <FontAwesome className={cx(styles.star, 'fa-star')} />
+          <FontAwesome className={cx(styles.pictogram, 'fa-star')} />
           <span>{stargazersCount}</span>
         </a>
       </div>
